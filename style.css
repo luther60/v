@@ -1,0 +1,159 @@
+* {margin: 0; padding: 0; font-family: 'Oswald';}
+
+/*Header*/
+.head{
+  height: 6rem;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color:#423e33 ;
+  
+  color: #a2ae9c;}
+
+.logo{margin-left: 2rem;font-size: 200%;}
+
+.content_login{display: flex;align-items: center;margin-right: 2rem;}
+
+.login_link:hover{color: #e67e30;}
+
+.link{ display:flex; align-items: center;background-color:#e67e30 ;}
+
+.link_category {display: flex;list-style: none;width: 100%;}
+
+.lien{display: flex; width: 100%;margin: auto;text-align: center;justify-content: center;align-items: center;}
+
+a{color: black;text-decoration: none;}
+
+li{font-size: 1.5rem;}
+
+.nav_link:hover{color: #423e33;}
+
+/*Main (index.php)*/
+
+#img_home{height: 25rem;display: flex;justify-content: center;}
+
+#img_main{width: 70%;}
+
+#title_index{text-align: center;margin-top: 2rem;}
+
+body{background-color:#ddc7a4;}
+
+.content_article{display: flex;justify-content: center;align-content: center;margin: 5%;color:#a2ae9c;}
+
+.img_right {width: 25%;height: 20%;margin: 2%;rotate: -5deg;}
+
+.img_left{width: 25%;height: 20%;margin: 2%;rotate: 5deg;}
+
+.text_right{
+  width: 50%;height:40%;
+  background-color: #423e33;
+  text-align: center;
+  margin-left: 5%;border-radius: 0.5rem;
+  font-size: 1.3rem;
+}
+
+li{list-style: none;}
+
+.link_contact{background-color: #e67e30;width: 6rem;margin: auto;margin-top: 1rem;height: 2.5rem;align-content: center;}
+
+.sous_bloc, .sous_bloc2, .sous_bloc3, .sous_bloc4, .sous_bloc5{
+  width: 50%;
+  margin:auto;
+  display: none;
+  width: 50%;height:40%;
+  background-color: #423e33;
+  text-align: center;
+  border-radius: 0.5rem;
+  font-size: 1.3rem;}
+
+  .sous_bloc5{margin-bottom: 2rem;}
+
+.text_left{
+  width: 50%;height:40%;
+  background-color: #423e33;
+  text-align: center;
+  margin-right: 5%;border-radius: 0.5rem;
+  font-size: 1.3rem;
+}
+
+#btn1,#btn2,#btn3,#btn4,#btn5{margin: 2%;width: 6rem;height: 2.5rem;font-size: 1.5rem;background-color: #e67e30;}
+
+#btn1:hover,#btn2:hover,#btn3:hover,#btn4:hover,#btn5:hover,.link_contact:hover{background-color: #a2ae9c;}
+
+/*Footer*/
+
+footer{display: flex;justify-content: space-around;background-color: #a2ae9c;align-items: center;}
+
+.social{width: 1.5rem;height: 1.5rem;}
+
+.adress, .hour{font-size: 1.5rem;text-align: center;}
+
+.social_link{transition: 1s;}
+
+.social_link:hover{transform:rotate(360deg);}
+
+/*Page vehicules.php*/
+
+/*carte vehicule*/
+
+.bloc_card{display: flex;flex-direction: row;flex-wrap: wrap;justify-content: center;margin: 5rem;}
+
+.text_card{text-align: center;justify-content: center;}
+
+.card_car{margin: 1rem;background-color: #423e33;border-radius: 5%;}
+
+#img_card{width: 19.5rem;height: 15rem;}
+
+.link_car{
+  background-color: #e67e30;
+  width: 6rem;height: 2rem;
+  margin: auto;margin-top: 1rem;margin-bottom: 1rem;
+  align-content: center;}
+
+  .link_car:hover{background-color: #a2ae9c;}
+
+  /*Page vehicule.php*/
+
+/*carte vehicule*/
+
+.info_car{font-size: 2rem;}
+
+.bloc_card_detail{width: 100%;display: flex;justify-content: center;}
+
+.card_car_detail{margin: 1rem;background-color: #423e33;border-radius: 5%;width: 85%;}
+
+.icon_car{width: 1.5rem;height: 1.5rem;margin-right: 0.5rem;}
+
+#text_option{
+  display: flex;justify-content: space-around;
+  flex-wrap: wrap;margin-bottom: 1rem;
+  background-color: #423e33;color: #ddc7a4;}
+
+.call_car{
+    background-color: #e67e30;
+    width: 10rem;height: 4rem;font-size: 1.5rem;
+    margin: auto;margin-top: 1rem;margin-bottom: 1rem;
+    align-content: center;text-align: center;}
+  
+.call_car:hover{background-color: #a2ae9c;}
+
+.test{width: 50rem;height: 20rem;}
+
+/*Page contact.php*/
+
+/*Formulaire*/
+
+form{
+  display: flex;flex-direction: column;align-items: center;
+  background-image: url('../assets/default1.jpg');background-repeat: no-repeat;background-size: cover;
+  color: #e67e30;
+  }
+
+label, input{width: 30%;height: 2.5rem;text-align: center;margin: 1rem;font-size: 2rem;}
+
+textarea{text-align: center;font-size: 1.5rem;margin-bottom: 1.5rem;}
+
+#login_form{height: 45rem;margin: 2rem;}
+
+
+
