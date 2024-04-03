@@ -6,7 +6,7 @@ require_once __DIR__.'/template/header.php';
 <body>
   <main>
     <div id="img_home"><img id="img_main" src="../assets/default.jpg" alt="car home"/></div>
-   <h1 id="title_index">Bienvenue chez Monsieur Parrot, votre garagiste de confiance !</h1>
+   <h1 class="title_index">Bienvenue chez Monsieur Parrot, votre garagiste de confiance !</h1>
     <!--Bloc 1 -->
     <section class='content_article'>
     <img class="img_right" src="./assets/cars1.jpg">
