@@ -19,7 +19,7 @@ require_once __DIR__.'/template/header.php';
 <label for="message">Message <span aria-label="required">*</span></label>
 <textarea id="message" name="message" rows="10" cols="100" placeholder="Votre message ici...."></textarea>
 
-<div class="call_car"><a href="contact.php">Envoyer</a></div>
+<input class="button b_update" type="submit" name="update_user" value="Modifier"/>
 
 </form>
 

@@ -32,14 +32,14 @@ if(isset($_POST['login']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
       session_start();
       session_regenerate_id(true);
       $_SESSION['user'] = $user;
-      //setcookie("useradmin", 'admin', time()+3600, '/');
+      setcookie("useradmin", 'admin', time()+3600, '/');
       header("location: accueil_admin.php");
     }
     if($user['role'] === 'beta') {
       session_start();
       session_regenerate_id(true);
       $_SESSION['user'] = $user;
-      //setcookie("user", 'user', time() + 3600, '/');
+      setcookie("user", 'user', time() + 3600, '/');
       header("location: accueil_admin.php");
   }
 

@@ -34,7 +34,7 @@ li{font-size: 1.5rem;}
 
 #img_main{width: 70%;}
 
-.title_index{text-align: center;margin-top: 2rem;}
+.title_index{text-align: center;margin-top: 2rem;margin-bottom: 2rem;}
 
 body{background-color:#ddc7a4;}
 
@@ -155,5 +155,44 @@ textarea{text-align: center;font-size: 1.5rem;margin-bottom: 1.5rem;}
 
 #login_form{height: 45rem;margin: 2rem;}
 
+/*Page no_access.php*/
 
+#alert{display: flex;justify-content: center;}
 
+#img_alert{width: 20rem;height: 20rem;}
+
+#title_alert{height: 14rem;text-align: center;}
+
+.link_return{
+  width: 15rem;height: 3rem;margin: auto;
+  background-color: #e67e30;
+  font-size: 2rem;margin-bottom: 2rem;margin-top: 2rem;
+  display: flex;justify-content: center;
+}
+
+/*Page users.php*/
+
+#main_user{margin: 3rem;}
+
+.card_user{
+  display: flex;justify-content: space-around;align-content: center;
+  border: 5px #a2ae9c solid;
+  width: 100%;margin: auto;
+}
+.content_user{margin: 2rem;font-size: 1.5rem;}
+
+.btn_modify{background-color: #e67e30;width: 15rem;align-items: center;display: flex;justify-content: center;margin: auto;}
+
+.link_modify{font-size: 1.5rem;}
+
+.link_modify:hover{color:#423e33;}
+
+.b_update{background-color: #e67e30;height: 4rem;width: 8rem;}
+
+.b_update:hover{color: #423e33;}
+
+.alert{background-color: #e67e30;text-align: center;margin: 2rem;height: 5rem;align-content: center;}
+
+/*Page delete_user.php*/
+
+#full{min-height: 37.5rem;}
