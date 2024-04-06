@@ -3,6 +3,10 @@ require_once '../admin/header_admin.php';
 require_once '../lib/pdo.php';
 require_once '../config/users.php';
 require_once '../config/error.php';
+if(($_SESSION['user']['role']) === null) { 
+  redirect();
+ }
+
 
 //Vérification de la présence d'une soumission et de la méthode
 if(isset($_POST['create_user']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
