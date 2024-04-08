@@ -23,7 +23,7 @@
     <ul class="link_category">
     <div class="lien">
       <img class="icon" src="/assets/cars_home.png" alt="icone accueil véhicule">
-      <li><a class='nav_link' href="cars/vehicules.php">Véhicules</a></li>
+      <li><a class='nav_link' href="../admin/vehicules.php">Véhicules</a></li>
     </div>
     <div class="lien">
       <img class="icon" src="/assets/mail.png" alt="icone message">
@@ -32,10 +32,6 @@
     <div class="lien">
       <img class="icon" src="/assets/avis.png" alt="icone avis">
       <li><a class='nav_link' href="../admin/avis/post_avis.php">Avis</a></li>
-    </div>
-    <div class="lien">
-      <img class="icon" src="/assets/user_round.png" alt="icone user">
-      <li><a class='nav_link' href="users/users.php">Utilisateurs</a></li>
     </div>
     </ul>
   </nav>

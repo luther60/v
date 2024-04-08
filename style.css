@@ -114,7 +114,7 @@ footer{display: flex;justify-content: space-around;background-color: #a2ae9c;ali
 
   /*Page vehicule.php*/
 
-/*carte vehicule*/
+/*carte vehicule details*/
 
 .info_car{font-size: 2rem;}
 
@@ -154,6 +154,12 @@ label, input{width: 30%;height: 2.5rem;text-align: center;margin: 1rem;font-size
 textarea{text-align: center;font-size: 1.5rem;margin-bottom: 1.5rem;}
 
 #login_form{height: 45rem;margin: 2rem;}
+
+.liste_filter{display: flex;flex-direction: column;}
+
+#lab_filter{width: 34rem;margin-top: 5rem;}
+
+#option{height: 3rem;font-size: 1.5rem;text-align: center;}
 
 /*Page no_access.php*/
 

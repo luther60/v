@@ -5,7 +5,7 @@ if(isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   var_dump($_FILES['img']);
   if($_FILES['img']['error'] != 4) {
     echo 'Hello';
- $extensions = ['jpg','png','jpeg'];//Tableau extension accepté
+  $extensions = ['jpg','png','jpeg'];//Tableau extension accepté
   $maxSize = 5000000;//Taille max du fichier imposé
   $countfiles = count($_FILES['img']['name']);//On compte le nb de fichiers uploadé
 

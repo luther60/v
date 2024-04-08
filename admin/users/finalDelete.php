@@ -1,8 +1,8 @@
 <?php session_start();
-require_once '../admin/header_admin.php';
-require_once '../lib/pdo.php';
-require_once '../config/users.php';
-require_once '../config/error.php';
+require_once 'header_user.php';
+require_once __DIR__.'/../../lib/pdo.php';
+require_once __DIR__.'/../../config/users.php';
+require_once __DIR__.'/../../config/error.php';
 /*Vérification de l'user connecté, si pas de session, on redirige vers accueil 
 (A la fermeture du client, la session est détruite)*/
 if(($_SESSION['user']['role']) === null) { 
@@ -23,4 +23,4 @@ if(isset($_GET['id_user'])) {
 
  <div class="content_user btn_modify"><a href="users.php">Retour à la liste des utilisateurs</a></div>
 
- <?php require_once '../admin/footer.php';?>
+ <?php require_once __DIR__.'/../footer.php';?>
