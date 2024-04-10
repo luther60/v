@@ -8,8 +8,6 @@ $vehicules = getVehicules($pdo);
 (A la fermeture du client, la session est détruite)*/
 if(($_SESSION['user']['role']) === null) { 
   redirect();
- }elseif(($_SESSION['user']['role']) != 'admin') {
-  getMessage();
  }
 
 ?>

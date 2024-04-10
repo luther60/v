@@ -5,6 +5,8 @@ require_once __DIR__.'/../../config/users.php';
 require_once __DIR__.'/../../config/error.php';
 if(($_SESSION['user']['role']) === null) { 
   redirect();
+ }elseif(($_SESSION['user']['role']) != 'beta') {
+  getMessage();
  }
 
 

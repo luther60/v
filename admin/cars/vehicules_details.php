@@ -10,8 +10,6 @@ $images = getVehiculesImg($pdo,$_GET['id_car']);
 (A la fermeture du client, la session est détruite)*/
 if(($_SESSION['user']['role']) === null) { 
   redirect();
- }elseif(($_SESSION['user']['role']) != 'admin') {
-  getMessage();
  }
 
 ?>
@@ -56,7 +54,8 @@ if(($_SESSION['user']['role']) === null) {
     </article>
   </section>
 
-  <div class="call_car"><a href="contact.php">Modifier</a></div>
+  <div class="call_car"><a href="update_vehicule.php?id_car=<?=$vehicule['id_car']?>">Modifier</a></div>
+  <div class="call_car"><a href="delete_vehicule.php?id_car=<?=$vehicule['id_car']?>">Supprimer</a></div>
 
 </main>
 <?php require_once __DIR__.'/../footer.php';?>

@@ -8,13 +8,17 @@ require_once __DIR__.'/../../config/error.php';
 if(($_SESSION['user']['role']) === null) { 
   redirect();
  }
-  
-//Vérification de la présence d'une soumission et de la méthode
-if(isset($_POST['create_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
+ $vehicule = getVehiculeById($pdo,$_GET['id_car']);
+ $options = getVehiculesOptions($pdo,$_GET['id_car']);
+ $images = getVehiculesImg($pdo,$_GET['id_car']);
 
-  //Création d'un id vehicule unique
-  $post_id = '';
-  $id_car = uniqid($post_id,true);//True améliore l'unicité
+?>
+
+<?php
+//Vérification de la présence d'une soumission et de la méthode
+if(isset($_POST['update_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
+
+  $id_car = $_GET['id_car'];
 
   //Traitement de chaque entrée utilisateur
   if(isset($_POST['marque'])) {
@@ -164,14 +168,21 @@ if(isset($_POST['create_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   if($filesize > $maxSize) {//Comparaison de la taille par rapport au max défini 
     echo '<h1 class="alert">La taille du fichier '.$filename.' est trop volumineux (Max : 5 Mo) !! </h1>';  
   }else{
+     $count = count($images);//On compte le nb images actuelles
+     for($i = 0; $i < $count; $i++) {
+     $currentImg = $images[$i]['id_img'];
+     $id_img = $currentImg;
+     if(file_exists($images[$i]['path_img'])) {
+      unlink($images[$i]['path_img']);
+     }
      $rename = uniqid().'.'.$filename;//creation id unique
-     $filetemp = $_FILES['img']['tmp_name'][$i];
      $upload = "../upload_img/".$rename;
      move_uploaded_file($_FILES['img']['tmp_name'][$i], $upload); 
      $path_img = $upload;
      $id_current_img = $id_car;
-     $name_img = $rename;
-     $uploadImg = uploadImg($pdo,$name_img,$path_img,$id_current_img);
+     $name = $rename;
+     $updateImg = updateImg($pdo,$name,$path_img,$id_current_img,$id_img);   
+ }
   }
    }
     }
@@ -183,39 +194,43 @@ if(isset($_POST['create_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   echo '<h1 class=\'alert\'>La création du véhicule à échoué !! </h1>';
 } else {
      $newName = uniqid().'.'.$_FILES['img_default']['name'];
+     //Si présence d'une ancienne image, on la supprime
+     if(file_exists($vehicule['img'])) {
+      unlink($vehicule['img']);
+     }
      $img_temp = $_FILES['img_default']['tmp_name'];
      $upload_img = "../upload_img/".$newName;
      move_uploaded_file($img_temp,$upload_img);
   $img = $upload_img;
   $id_current = $id_car;
-  $createVehicule = createVehicule($pdo,$id_car,$marque,$modele,$annee,$km,$energie,$transmission,$cv,$prix,$interieur,$exterieur,
+  $updateVehicule = updateVehicule($pdo,$id_car,$marque,$modele,$annee,$km,$energie,$transmission,$cv,$prix,$interieur,$exterieur,
   $securite,$confort,$id_current,$img);
   echo '<h1 class=\'alert\'>La création du véhicule à été effectué !! </h1>';
 } 
 }
 ?>
 
-<h1 class="title_index">Formulaire de création d'un nouveau vehicule :</h1>
+ <h1 class="title_index">Formulaire de modification d'un vehicule :</h1>
 
 </h2>
 
-<form method="POST" action="create_vehicule.php" enctype="multipart/form-data">
+<form method="POST" action="update_vehicule.php?id_car=<?=$_GET['id_car'] ?>" enctype="multipart/form-data">
 
   <label for="marque">Marque&nbsp;:<span aria-label="required">*</span></label>
-  <input id="marque" type="text" name="marque" required />
+  <input id="marque" type="text" name="marque" value="<?=$vehicule['marque']?>" required />
 
   <label for="modele">Modèle&nbsp;:<span aria-label="required">*</span></label>
-  <input id="modele" type="text" name="modele" />
+  <input id="modele" type="text" value="<?=$vehicule['modele']?>" name="modele" />
 
   <label for="annee">Année&nbsp;:<span aria-label="required">*</span></label>
-  <input id="annee" type="text" name="annee" required />
+  <input id="annee" type="text" value="<?=$vehicule['annee']?>" name="annee" required />
 
   <label for="km">Kilométrage&nbsp;:<span aria-label="required">*</span></label>
-  <input id="km" type="text" name="km" required />
+  <input id="km" type="text" value="<?=$vehicule['km']?>" name="km" required />
 
   <div class="liste_filter"> 
   <label id="lab_filter" for="filter">Choisir le type de carburant :</label>
-  <select id="option" name="energie">
+  <select id="option" name="energie" required>
     <option value="">Veuillez choisir</option> 
     <option value="Essence">Essence</option>
     <option value="Diesel">Diesel</option>
@@ -228,7 +243,7 @@ if(isset($_POST['create_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
   <div class="liste_filter"> 
   <label id="lab_filter" for="filter">Choisir le type de transmission :</label>
-  <select id="option" name="transmission">
+  <select id="option" name="transmission" required>
     <option value="">Veuillez choisir</option> 
     <option value="Boite manuel">Boite manuel</option>
     <option value="Boite automatique">Boite automatique</option>
@@ -236,22 +251,22 @@ if(isset($_POST['create_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   </div>
 
   <label for="cv">CV&nbsp;:<span aria-label="required">*</span></label>
-  <input id="cv" type="text" name="cv" required />
+  <input id="cv" type="text" value="<?=htmlentities($vehicule['cv'])?>" name="cv" required />
 
   <label for="prix">Prix&nbsp;:<span aria-label="required">*</span></label>
-  <input id="prix" type="text" name="prix" required />
+  <input id="prix" type="text" value="<?=htmlentities($vehicule['prix'])?>" name="prix" required />
 
   <label for="exterieur">Options extérieur&nbsp;:<span aria-label="required">*</span></label>
-  <textarea id="exterieur" name="exterieur" cols="60" rows="5" placeholder="Options extérieur"></textarea>
+  <textarea id="exterieur" name="exterieur"  cols="60" rows="5" placeholder="Options extérieur"><?=htmlentities($options['exterieur'])?></textarea>
 
   <label for="interieur">Options intérieur&nbsp;:<span aria-label="required">*</span></label>
-  <textarea id="interieur" name="interieur" cols="60" rows="5" placeholder="Options intérieur"></textarea>
+  <textarea id="interieur" name="interieur"  cols="60" rows="5" placeholder="Options intérieur"><?=htmlentities($options['interieur'])?></textarea>
 
   <label for="securite">Options sécurité&nbsp;:<span aria-label="required">*</span></label>
-  <textarea id="securite" name="securite" cols="60" rows="5" placeholder="Options sécurité"></textarea>
+  <textarea id="securite" name="securite"  cols="60" rows="5" placeholder="Options sécurité"><?=htmlentities($options['securite'])?></textarea>
 
   <label for="confort">Options confort&nbsp;:<span aria-label="required">*</span></label>
-  <textarea id="confort" name="confort" cols="60" rows="5" placeholder="Options confort"></textarea>
+  <textarea id="confort" name="confort"  cols="60" rows="5" placeholder="Options confort"><?=htmlentities($options['confort'])?></textarea>
 
   <label for="img">Ajouter une image principale&nbsp;:<span>*</span></label>
   <input type="file" name="img_default" required>
@@ -259,8 +274,7 @@ if(isset($_POST['create_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   <label for="img">Ajouter des images secondaires (1 min)&nbsp;:</label>
   <input type="file" name="img[]" multiple required>
 
-
-  <input class="button b_update" type="submit" name="create_vehicule" value="Créer">
+  <input class="button b_update" type="submit" name="update_vehicule" value="Modifier">
 
 </form>
 

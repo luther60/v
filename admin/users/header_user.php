@@ -23,7 +23,7 @@
     <ul class="link_category">
     <div class="lien">
       <img class="icon" src="/assets/cars_home.png" alt="icone accueil véhicule">
-      <li><a class='nav_link' href="/../admin/vehicules/vehicules.php">Véhicules</a></li>
+      <li><a class='nav_link' href="../cars/vehicules.php">Véhicules</a></li>
     </div>
     <div class="lien">
       <img class="icon" src="/assets/mail.png" alt="icone message">
