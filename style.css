@@ -102,7 +102,7 @@ footer{display: flex;justify-content: space-around;background-color: #a2ae9c;ali
 
 .card_car{margin: 1rem;background-color: #423e33;border-radius: 5%;}
 
-#img_card{width: 19.5rem;height: 15rem;}
+.img_card{width: 20.5rem;height: 15rem;}
 
 .link_car{
   background-color: #e67e30;
@@ -111,6 +111,10 @@ footer{display: flex;justify-content: space-around;background-color: #a2ae9c;ali
   align-content: center;}
 
   .link_car:hover{background-color: #a2ae9c;}
+
+  .liste_filter_car{display: flex;flex-direction: column;justify-content: center;align-items: center;}
+
+  #filter_cars{width: 15%;height: 2.5rem;font-size: 1.5rem;text-align: center;}
 
   /*Page vehicule.php*/
 
@@ -138,6 +142,8 @@ footer{display: flex;justify-content: space-around;background-color: #a2ae9c;ali
 .call_car:hover{background-color: #a2ae9c;}
 
 .test{width: 50rem;height: 20rem;}
+
+.details{width: 20%;}
 
 /*Page contact.php*/
 

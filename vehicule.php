@@ -1,5 +1,11 @@
 <?php 
 require_once __DIR__.'/template/header.php'; 
+require_once __DIR__.'/lib/pdo.php';
+require_once __DIR__.'/config/vehicules.php';
+require_once __DIR__.'/config/error.php';
+$vehicule = getVehiculeById($pdo,$_GET['id_car']);
+$options = getVehiculesOptions($pdo,$_GET['id_car']);
+$images = getVehiculesImg($pdo,$_GET['id_car']);
  ?>
 
 <main>
@@ -7,62 +13,42 @@ require_once __DIR__.'/template/header.php';
   <article class="card_car_detail">
     <div class="text_card">
       
-      <h2 class="info_car"><img class="icon_car" src="../assets/brand.png" alt="marque image"/>Marque</h2>
-      <h2 class="info_car"><img class="icon_car" src="../assets/modele.png" alt="marque image"/>Modèle</h2>
-      <p class="info_car"><img class="icon_car" src="../assets/kilometer.png" alt="marque image"/>25478 Km</p>
-      <p class="info_car"><img class="icon_car" src="../assets/annee.png" alt="marque image"/>2018</p>
-      <h2 class="info_car"><img class="icon_car" src="../assets/money.png" alt="marque image"/>27489€</h2> 
-      <img id="img_card" src="../assets/backcars2.jpg" alt="car image"/>
-      <img id="img_card" src="../assets/backcars2.jpg" alt="car image"/>
-      <img id="img_card" src="../assets/backcars2.jpg" alt="car image"/> 
+      <h2 class="info_car"><img class="icon_car" src="/../../assets/brand.png" alt="icone marque"/><?= $vehicule['marque']?></h2>
+      <h2 class="info_car"><img class="icon_car" src="/../../assets/modele.png" alt="icone modele"/><?= $vehicule['modele']?></h2>
+      <h2 class="info_car"><img class="icon_car" src="/../../assets/kilometer.png" alt="icone kilomètre"/><?= $vehicule['km']?></h2>
+      <h2 class="info_car"><img class="icon_car" src="/../../assets/annee.png" alt="icone annee"/><?= $vehicule['annee']?></h2>
+      <h2 class="info_car"><img class="icon_car" src="/../../assets/money.png" alt="icone prix"/><?= $vehicule['prix']?>€</h2> 
+      <?php foreach($images as $image) { ?>
+      <img class="img_card" src="admin<?=$image['path_img'] ?>" alt="car image"/>
+      <?php }  ?>
+     
     </div>   
   </article>
   </section>
 
   <section id="text_option">
-    <article>
+    <article class="details">
       <h2>Extérieur</h2>
-      <li>Rétroviseurs rabattables électriquement</li>
-      <li>Aide parking</li>
-      <li>Jantes alu</li>
-      <li>Lunette arrière dégivrante</li>
-      <li>Rétroviseurs électriques</li>
+      <li><?=nl2br($options['exterieur'])?></li>     
     </article>
   
-    <article>
+    <article class="details">
       <h2>Intérieur</h2>
-      <li>Système audio CD</li>
-      <li>Régulateur de vitesse</li>
-      <li>Ordinateur de bord</li>
-      <li>6 haut-parleurs</li>
-      <li>Accoudoir central arrière</li>
+      <li><?=nl2br($options['interieur'])?></li>    
     </article>
 
-    <article>
+    <article class="details">
       <h2>Confort</h2>
-      <li>Accès Confort</li>
-      <li>Ecran multifonction couleur</li>
-      <li>Filtre à Pollen</li>
-      <li>Miroir de courtoisie conducteur éclairé</li>
-      <li>Répétiteurs de clignotant dans rétro ext</li>
+      <li><?=nl2br($options['confort'])?></li>      
     </article>
   
-    <article>
+    <article class="details">
       <h2>Sécurité</h2>
-      <li>Essuie-glaces automatiques</li>
-      <li>Feux automatiques</li>
-      <li>Fixations ISOFIX</li>
-      <li>Kit téléphone main libre bluetooth</li>
-      <li>Radar anti-collision</li>
+      <li><?=nl2br($options['securite'])?></li>      
     </article>
   </section>
 
-  <div class="call_car"><a href="contact.php">Nous contactez</a></div>
-
-<div class="test">
-  <img id="img_card" src="../assets/cars1.jpg" alt="car image"/>
-  <img id="img_card" src="../assets/cars1.jpg" alt="car image"/>
-  <img id="img_card" src="../assets/cars1.jpg" alt="car image"/> 
-</div>
+  <div class="call_car"><a href="contact.php?id_car=<?=$vehicule['id_car']?>">Nous contactez</a></div>
+  
 </main>
 <?php require_once __DIR__.'/template/footer.php'; ?>  

@@ -25,7 +25,7 @@ if(($_SESSION['user']['role']) === null) {
       <h2 class="info_car"><img class="icon_car" src="/../../assets/annee.png" alt="icone annee"/><?= $vehicule['annee']?></h2>
       <h2 class="info_car"><img class="icon_car" src="/../../assets/money.png" alt="icone prix"/><?= $vehicule['prix']?>€</h2> 
       <?php foreach($images as $image) { ?>
-      <img id="img_card" src="<?=$image['path_img'] ?>" alt="car image"/>
+      <img class="img_card" src="<?=$image['path_img'] ?>" alt="car image"/>
       <?php }  ?>
      
     </div>   
@@ -33,22 +33,22 @@ if(($_SESSION['user']['role']) === null) {
   </section>
 
   <section id="text_option">
-    <article>
+    <article class="details">
       <h2>Extérieur</h2>
       <li><?=nl2br($options['exterieur'])?></li>     
     </article>
   
-    <article>
+    <article class="details">
       <h2>Intérieur</h2>
       <li><?=nl2br($options['interieur'])?></li>    
     </article>
 
-    <article>
+    <article class="details">
       <h2>Confort</h2>
       <li><?=nl2br($options['confort'])?></li>      
     </article>
   
-    <article>
+    <article class="details">
       <h2>Sécurité</h2>
       <li><?=nl2br($options['securite'])?></li>      
     </article>

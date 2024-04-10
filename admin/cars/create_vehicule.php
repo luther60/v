@@ -19,7 +19,7 @@ if(isset($_POST['create_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   //Traitement de chaque entrée utilisateur
   if(isset($_POST['marque'])) {
     $marque_sanitize = htmlentities($_POST['marque']);
-    if(!preg_match("/^[a-zA-Z-' ]*$/",$marque_sanitize)) {
+    if(!preg_match("/^[a-zA-Z-' 0-9]*$/",$marque_sanitize)) {
       echo '<h1 class=\'alert\'>Le format utilisé pour le nom de la marque est incorrect !! </h1>';
     }else {
       $marque = $marque_sanitize;
@@ -55,22 +55,14 @@ if(isset($_POST['create_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
   if(isset($_POST['energie'])) {
     $energie_sanitize = htmlentities($_POST['energie']);
-    if(!preg_match("/^[a-zA-Z [:punct:]éèàç]+$/u",$energie_sanitize)) {
-      echo '<h1 class=\'alert\'>Le format utilisé pour l\énergie est incorrect !! </h1>';
-    }else {
-      $energie = $energie_sanitize;
+    $energie = $energie_sanitize;
     }
-  }
-
+  
   if(isset($_POST['transmission'])) {
     $transmission_sanitize = htmlentities($_POST['transmission']);
-    if(!preg_match("/^[a-zA-Z-' ]*$/",$transmission_sanitize)) {
-      echo '<h1 class=\'alert\'>Le format utilisé pour la transmission est incorrect !! </h1>';
-    }else {
-      $transmission = $transmission_sanitize;
+    $transmission = $transmission_sanitize;
     }
-  }
-
+  
   if(isset($_POST['cv'])) {
     $cv_sanitize = htmlentities($_POST['cv']);
     if(!preg_match("/^[a-zA-Z-' 0-9]*$/",$cv_sanitize)) {
@@ -91,39 +83,24 @@ if(isset($_POST['create_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
   if(isset($_POST['exterieur'])) {
     $exterieur_sanitize = htmlentities($_POST['exterieur']);
-    if(!preg_match("/^[a-zA-Z0-9 [:punct:]éèàç]+$/u",$exterieur_sanitize)) {
-      echo '<h1 class=\'alert\'>Le format utilisé pour les options extérieur est incorrect !! </h1>';
-    }else {
-      $exterieur = $exterieur_sanitize;
+    $exterieur = $exterieur_sanitize;
     }
-  }
-
+  
   if(isset($_POST['interieur'])) {
     $interieur_sanitize = htmlentities($_POST['interieur']);
-    if(!preg_match("/^[a-zA-Z0-9 [:punct:]éèàç]+$/u",$interieur_sanitize)) {
-      echo '<h1 class=\'alert\'>Le format utilisé pour les options intérieur est incorrect !! </h1>';
-    }else {
-      $interieur = $interieur_sanitize;
+    $interieur = $interieur_sanitize;
     }
-  }
-
+  
   if(isset($_POST['securite'])) {
     $securite_sanitize = htmlentities($_POST['securite']);
-    if(!preg_match("/^[a-zA-Z0-9 [:punct:]éèàç]+$/u",$securite_sanitize)) {
-      echo '<h1 class=\'alert\'>Le format utilisé pour les options de sécurité est incorrect !! </h1>';
-    }else {
-      $securite = $securite_sanitize;
+    $securite = $securite_sanitize;
     }
-  }
-
+  
   if(isset($_POST['confort'])) {
     $confort_sanitize = htmlentities($_POST['confort']);
-    if(!preg_match("/^[a-zA-Z0-9 [:punct:]éèàç]+$/u",$confort_sanitize)) {
-      echo '<h1 class=\'alert\'>Le format utilisé pour les options de confort est incorrect !! </h1>';
-    }else {
-      $confort = $confort_sanitize;
+    $confort = $confort_sanitize;
     }
-  }
+  
   //Traitement image default
   if(isset($_POST['img_default']) && ($_FILES['img_default']['error'] != 4)) {
 
