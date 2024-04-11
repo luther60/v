@@ -12,10 +12,10 @@
 <header>
   <!--First nav -->
   <nav class="head">
-    <h1 class="logo"><a href='accueil_admin.php'>Garage V.Parrot</a></h1>
+    <h1 class="logo"><a href='/admin/accueil_admin.php'>Garage V.Parrot</a></h1>
     <div class="content_login">
     <img class="icon" src="/assets/logout.png" alt="icone accueil">
-    <h2><a class="login_link"  href="../config/logout.php">Se déconnecter</a></h2>
+    <h2><a class="login_link"  href="/config/logout.php">Se déconnecter</a></h2>
     </div>
   </nav>
   <!--Second nav -->
@@ -23,7 +23,7 @@
     <ul class="link_category">
     <div class="lien">
       <img class="icon" src="/assets/cars_home.png" alt="icone accueil véhicule">
-      <li><a class='nav_link' href="cars/vehicules.php">Véhicules</a></li>
+      <li><a class='nav_link' href="../cars/vehicules.php">Véhicules</a></li>
     </div>
     <div class="lien">
       <img class="icon" src="/assets/mail.png" alt="icone message">
@@ -31,11 +31,7 @@
     </div>
     <div class="lien">
       <img class="icon" src="/assets/avis.png" alt="icone avis">
-      <li><a class='nav_link' href="../admin/avis/read_avis.php">Avis</a></li>
-    </div>
-    <div class="lien">
-      <img class="icon" src="/assets/user_round.png" alt="icone user">
-      <li><a class='nav_link' href="users/users.php">Utilisateurs</a></li>
+      <li><a class='nav_link' href="./read_avis.php">Avis</a></li>
     </div>
     </ul>
   </nav>

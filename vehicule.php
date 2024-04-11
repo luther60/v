@@ -28,22 +28,22 @@ $images = getVehiculesImg($pdo,$_GET['id_car']);
 
   <section id="text_option">
     <article class="details">
-      <h2>Extérieur</h2>
+      <h2 class="title_cars_detail">Extérieur</h2>
       <li><?=nl2br($options['exterieur'])?></li>     
     </article>
   
     <article class="details">
-      <h2>Intérieur</h2>
+      <h2 class="title_cars_detail">Intérieur</h2>
       <li><?=nl2br($options['interieur'])?></li>    
     </article>
 
     <article class="details">
-      <h2>Confort</h2>
+      <h2 class="title_cars_detail">Confort</h2>
       <li><?=nl2br($options['confort'])?></li>      
     </article>
   
     <article class="details">
-      <h2>Sécurité</h2>
+      <h2 class="title_cars_detail">Sécurité</h2>
       <li><?=nl2br($options['securite'])?></li>      
     </article>
   </section>

@@ -69,7 +69,7 @@ if(isset($_POST['update_user']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   } else {
     //Si tout est OK
     $updateUser = updateUser($pdo,$id_user,$name,$firstname,$mail,$role);
-    echo '<h1 class=\'alert\'>La modification de l\'utilisateur à été effectué !! </h1>';
+    echo '<h1 class=\'true\'>La modification de l\'utilisateur à été effectué !! </h1>';
   }
 }
 

@@ -57,7 +57,7 @@ if(isset($_POST['create_user']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
 } else {
   //Si tout est OK
   $createUser = createUser($pdo,$name,$firstname,$mail,$password,$role);
-  echo '<h1 class=\'alert\'>La création de l\'utilisateur à été effectué !! </h1>';
+  echo '<h1 class=\'true\'>La création de l\'utilisateur à été effectué !! </h1>';
 }
   
 }

@@ -182,7 +182,7 @@ if(isset($_POST['update_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   $id_current = $id_car;
   $updateVehicule = updateVehicule($pdo,$id_car,$marque,$modele,$annee,$km,$energie,$transmission,$cv,$prix,$interieur,$exterieur,
   $securite,$confort,$id_current,$img);
-  echo '<h1 class=\'alert\'>La création du véhicule à été effectué !! </h1>';
+  echo '<h1 class=\'true\'>La création du véhicule à été effectué !! </h1>';
 } 
 }
 ?>

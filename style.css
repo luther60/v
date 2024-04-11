@@ -114,7 +114,7 @@ footer{display: flex;justify-content: space-around;background-color: #a2ae9c;ali
 
   .liste_filter_car{display: flex;flex-direction: column;justify-content: center;align-items: center;}
 
-  #filter_cars{width: 15%;height: 2.5rem;font-size: 1.5rem;text-align: center;}
+  #filter_cars{width: 15%;height: 2.5rem;font-size: 1.5rem;text-align: center;border-radius: 2rem;}
 
   /*Page vehicule.php*/
 
@@ -209,6 +209,51 @@ textarea{text-align: center;font-size: 1.5rem;margin-bottom: 1.5rem;}
 
 .alert{background-color: #e67e30;text-align: center;margin: 2rem;height: 5rem;align-content: center;}
 
+.true{background-color: #a2ae9c;text-align: center;margin: 2rem;height: 5rem;align-content: center;}
+
 /*Page delete_user.php*/
 
 #full{min-height: 37.5rem;}
+
+/*AVIS*/
+
+/*Page read_avis.php*/
+
+#parent_avis{display: flex;flex-wrap: wrap;justify-content: center;}
+
+.card_avis{border:0.5rem solid black;margin: 1rem;width: 20%;text-align: center;}
+
+.text_avis{font-size: 1.5rem;margin-bottom: 1rem;}
+
+.text_avis_validate{font-size: 1.5rem;margin-bottom: 1rem;color:black;background-color: #ddc7a4;}
+
+.min_height{min-height: 39.5rem;}
+
+
+
+/*Mobile*/
+@media (max-width: 375px) {
+  .icon{width: 2rem;height: 2rem;}
+
+  .nav_link{font-size: 1rem;}
+
+  #img_home{height: 10rem;}
+
+  .content_article{flex-direction: column;}
+
+  .img_right,.img_left,.text_right,.text_left,.sous_bloc,.sous_bloc2,.sous_bloc3,.sous_bloc4,.sous_bloc5{width: 85%;margin: auto;}
+
+  footer{flex-direction: column;}
+
+  #filter_cars{width: 50%;}
+
+ #text_option{flex-direction: column;}
+
+ .details{text-align: center;display: flex;flex-direction: column;}
+
+ .title_cars_detail{justify-content: center;}
+
+ 
+
+
+}
