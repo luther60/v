@@ -9,6 +9,7 @@ if(($_SESSION['user']['role']) === null) {
   redirect();
  }
 $allAvis = getPostFalse($pdo);
+
 ?>
 
 <main>

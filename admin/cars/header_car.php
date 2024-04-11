@@ -27,11 +27,11 @@
     </div>
     <div class="lien">
       <img class="icon" src="/assets/mail.png" alt="icone message">
-      <li><a class='nav_link' href="../admin/messages/contact.php">Messages</a></li>
+      <li><a class='nav_link' href="../avis/read_avis.php">Messages</a></li>
     </div>
     <div class="lien">
       <img class="icon" src="/assets/avis.png" alt="icone avis">
-      <li><a class='nav_link' href="../admin/avis/post_avis.php">Avis</a></li>
+      <li><a class='nav_link' href="../avis/read_avis.php">Avis</a></li>
     </div>
     </ul>
   </nav>

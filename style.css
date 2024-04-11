@@ -229,6 +229,12 @@ textarea{text-align: center;font-size: 1.5rem;margin-bottom: 1.5rem;}
 
 .min_height{min-height: 39.5rem;}
 
+/*Avis page index.php*/
+
+.validateAvis{display: flex}
+
+.container{margin: 1rem;width: auto;text-align: center;font-size: 1.5rem;}
+
 
 
 /*Mobile*/

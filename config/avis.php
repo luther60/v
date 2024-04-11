@@ -21,6 +21,15 @@ function getPostFalse(PDO $pdo) {
   return $avis;
 }
 
+//Récuperation avis validé
+function getPostTrue(PDO $pdo) {
+
+  $query = $pdo->prepare("SELECT * FROM `avis` WHERE `status` = 'valid'");
+  $query->execute();
+  $avis = $query->fetchAll(PDO::FETCH_ASSOC);
+  return $avis;
+}
+
 //Récuperation avis by id
 function getPostById(PDO $pdo,int $id_avis) {
 

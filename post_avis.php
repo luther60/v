@@ -7,7 +7,7 @@ require_once __DIR__.'/config/avis.php';
 if(isset($_POST['post_avis']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
   if(isset($_POST['firstname'])) {
-    $firstname_sanitize = htmlentities($_POST['firstname']);
+    $firstname_sanitize = htmlspecialchars($_POST['firstname']);
     if(!preg_match("/^[a-zA-Z-' ]*$/",$firstname_sanitize)) {
       echo '<h1 class=\'alert\'>Le format utilisé pour le prénom est incorrect !! </h1>';
     }else {
@@ -16,7 +16,7 @@ if(isset($_POST['post_avis']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 
   if(isset($_POST['note'])) {
-    $note_sanitize = htmlentities($_POST['note']);
+    $note_sanitize = htmlspecialchars($_POST['note']);
     if(!preg_match("/^[0-9 ]*$/",$note_sanitize)) {
       echo '<h1 class=\'alert\'>Le format utilisé pour la note est incorrect !! </h1>';
     }else {
@@ -25,12 +25,12 @@ if(isset($_POST['post_avis']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 
   if(isset($_POST['post'])) {
-    $avis_sanitize = htmlentities($_POST['post']);
+    $avis_sanitize = htmlspecialchars($_POST['post']);
     $avis = $avis_sanitize;
     }
 
     if(isset($_POST['status'])) {
-      $status_sanitize = htmlentities($_POST['status']);
+      $status_sanitize = htmlspecialchars($_POST['status']);
       $status = $status_sanitize;
       }  
   $send_avis = createAvis($pdo,$firstname,$avis,$note,$status);

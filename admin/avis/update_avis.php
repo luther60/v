@@ -26,6 +26,8 @@ if(isset($_POST['validate_avis']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
   if($validate_avis) {
     echo '<h1 class=\'true\'>L\'avis à bien été validé !! </h1>';
+  }else{
+    echo '<h1 class=\'alert\'>Echec de la modification !! </h1>';
   }
 }
 ?>
