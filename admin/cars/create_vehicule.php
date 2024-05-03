@@ -18,7 +18,7 @@ if(isset($_POST['create_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
   //Traitement de chaque entrée utilisateur
   if(isset($_POST['marque'])) {
-    $marque_sanitize = htmlentities($_POST['marque']);
+    $marque_sanitize = htmlspecialchars($_POST['marque']);
     if(!preg_match("/^[a-zA-Z-' 0-9]*$/",$marque_sanitize)) {
       echo '<h1 class=\'alert\'>Le format utilisé pour le nom de la marque est incorrect !! </h1>';
     }else {
@@ -27,7 +27,7 @@ if(isset($_POST['create_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 
   if(isset($_POST['modele'])) {
-    $modele_sanitize = htmlentities($_POST['modele'],);
+    $modele_sanitize = htmlspecialchars($_POST['modele'],);
     if(!preg_match("/^[a-zA-Z-' 0-9]*$/",$modele_sanitize)) {
       echo '<h1 class=\'alert\'>Le format utilisé pour le nom du modèle est incorrect !! </h1>';
     } else {
@@ -36,7 +36,7 @@ if(isset($_POST['create_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 
   if(isset($_POST['annee'])) {
-    $annee_sanitize = htmlentities($_POST['annee']);
+    $annee_sanitize = htmlspecialchars($_POST['annee']);
     if(!preg_match("/^[ 0-9]*$/",$annee_sanitize)) {
       echo '<h1 class=\'alert\'>Le format utilisé pour l\année est incorrect !! </h1>';
     }else {
@@ -45,7 +45,7 @@ if(isset($_POST['create_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 
   if(isset($_POST['km'])) {
-    $km_sanitize = htmlentities($_POST['km']);
+    $km_sanitize = htmlspecialchars($_POST['km']);
     if(!preg_match("/^[ 0-9]*$/",$km_sanitize)) {
       echo '<h1 class=\'alert\'>Le format utilisé pour le kilométrage est incorrect !! </h1>';
     }else {
@@ -54,17 +54,17 @@ if(isset($_POST['create_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 
   if(isset($_POST['energie'])) {
-    $energie_sanitize = htmlentities($_POST['energie']);
+    $energie_sanitize = htmlspecialchars($_POST['energie']);
     $energie = $energie_sanitize;
     }
   
   if(isset($_POST['transmission'])) {
-    $transmission_sanitize = htmlentities($_POST['transmission']);
+    $transmission_sanitize = htmlspecialchars($_POST['transmission']);
     $transmission = $transmission_sanitize;
     }
   
   if(isset($_POST['cv'])) {
-    $cv_sanitize = htmlentities($_POST['cv']);
+    $cv_sanitize = htmlspecialchars($_POST['cv']);
     if(!preg_match("/^[a-zA-Z-' 0-9]*$/",$cv_sanitize)) {
       echo '<h1 class=\'alert\'>Le format utilisé pour les CV est incorrect !! </h1>';
     }else {
@@ -73,7 +73,7 @@ if(isset($_POST['create_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 
   if(isset($_POST['prix'])) {
-    $prix_sanitize = htmlentities($_POST['prix']);
+    $prix_sanitize = htmlspecialchars($_POST['prix']);
     if(!preg_match("/^[ 0-9]*$/",$prix_sanitize)) {
       echo '<h1 class=\'alert\'>Le format utilisé pour le prix est incorrect !! </h1>';
     }else {
@@ -82,22 +82,22 @@ if(isset($_POST['create_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 
   if(isset($_POST['exterieur'])) {
-    $exterieur_sanitize = htmlentities($_POST['exterieur']);
+    $exterieur_sanitize = htmlspecialchars($_POST['exterieur']);
     $exterieur = $exterieur_sanitize;
     }
   
   if(isset($_POST['interieur'])) {
-    $interieur_sanitize = htmlentities($_POST['interieur']);
+    $interieur_sanitize = htmlspecialchars($_POST['interieur']);
     $interieur = $interieur_sanitize;
     }
   
   if(isset($_POST['securite'])) {
-    $securite_sanitize = htmlentities($_POST['securite']);
+    $securite_sanitize = htmlspecialchars($_POST['securite']);
     $securite = $securite_sanitize;
     }
   
   if(isset($_POST['confort'])) {
-    $confort_sanitize = htmlentities($_POST['confort']);
+    $confort_sanitize = htmlspecialchars($_POST['confort']);
     $confort = $confort_sanitize;
     }
   

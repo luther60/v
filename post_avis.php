@@ -2,14 +2,15 @@
 require_once __DIR__.'/template/header.php'; 
 require_once __DIR__.'/lib/pdo.php';
 require_once __DIR__.'/config/avis.php';
+require_once __DIR__.'/lib/ini.php';
 ?>
 <?php
 if(isset($_POST['post_avis']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
   if(isset($_POST['firstname'])) {
     $firstname_sanitize = htmlspecialchars($_POST['firstname']);
-    if(!preg_match("/^[a-zA-Z-' ]*$/",$firstname_sanitize)) {
-      echo '<h1 class=\'alert\'>Le format utilisé pour le prénom est incorrect !! </h1>';
+    if(!preg_match("/^[a-zA-Z-' éèç]*$/",$firstname_sanitize)) {
+      echo '<h1 class=\'alert\'>Certains caractères utilisé pour le prénom sont incorrect !! </h1>';
     }else {
       $firstname = $firstname_sanitize;
     }
@@ -18,7 +19,7 @@ if(isset($_POST['post_avis']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   if(isset($_POST['note'])) {
     $note_sanitize = htmlspecialchars($_POST['note']);
     if(!preg_match("/^[0-9 ]*$/",$note_sanitize)) {
-      echo '<h1 class=\'alert\'>Le format utilisé pour la note est incorrect !! </h1>';
+      echo '<h1 class=\'alert\'>Certains caractères utilisé pour la note sont incorrect !! </h1>';
     }else {
       $note = $note_sanitize;
     }
@@ -26,15 +27,28 @@ if(isset($_POST['post_avis']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
   if(isset($_POST['post'])) {
     $avis_sanitize = htmlspecialchars($_POST['post']);
-    $avis = $avis_sanitize;
+    if(!preg_match("/^[[:alnum:][:punct:][:space:]èéçà]+$/",$avis_sanitize)) {
+      echo '<h1 class=\'alert\'>Certains caractères utilisé pour l\'avis sont incorrect où le champs est resté vide !! </h1>';
+    }else{
+      $avis = $avis_sanitize;
     }
+  }
 
     if(isset($_POST['status'])) {
       $status_sanitize = htmlspecialchars($_POST['status']);
-      $status = $status_sanitize;
+      if($status_sanitize != 'notvalid'){
+        echo"<h1 class=alert> Erreur lors de l'envoi de l'avis !!</h1>";
+      }else{
+        $status = $status_sanitize;
+      }    
       }  
-  $send_avis = createAvis($pdo,$firstname,$avis,$note,$status);
-  if($send_avis) {
+
+      $date = date("28/04/2024");
+
+  if(empty($firstname) || empty($avis) || empty($note) || empty($status)) {
+    echo"<h1 class=alert> Echec lors de l'envoi de l'avis !!</h1>";
+  }else{
+    $send_avis = createAvis($pdo,$firstname,$avis,$note,$status,$date);
     echo '<h1 class=\'true\'>Votre avis à bien été envoyé !! </h1>';
   }
 }

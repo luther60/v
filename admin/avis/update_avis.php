@@ -1,14 +1,22 @@
 <?php
-ini_set('display_errors', 'on');
  session_start();
 require_once 'header_avis.php';
 require_once __DIR__.'/../../lib/pdo.php';
 require_once __DIR__.'/../../config/avis.php';
 require_once __DIR__.'/../../config/error.php';
+
 if(($_SESSION['user']['role']) === null) { 
   redirect();
  }
- $avis = getPostById($pdo,$_GET['id_avis']);
+
+ if(isset($_GET['id_avis'])){
+  try{
+  $avis = getPostById($pdo,$_GET['id_avis']);
+}catch(Exception $e){
+    echo"Capture de l'exception !".$e->getMessage();
+};
+}
+ 
 ?>
 
 <?php
@@ -22,24 +30,23 @@ if(isset($_POST['validate_avis']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
     $status = htmlentities($_POST['status']);
   }
 
-  $validate_avis = validateAvis($pdo,$id_avis,$status);
-
-  if($validate_avis) {
-    echo '<h1 class=\'true\'>L\'avis à bien été validé !! </h1>';
-  }else{
+  if(empty($id_avis) || (empty($status) || $status != 'valid')){
     echo '<h1 class=\'alert\'>Echec de la modification !! </h1>';
+  }else{
+    $validate_avis = validateAvis($pdo,$id_avis,$status);
+    echo '<h1 class=\'true\'>L\'avis à bien été validé !! </h1>';
   }
 }
 ?>
 
-<form method="POST" action="update_avis.php?id_avis=<?=$avis['id_avis']?>">
+<form method="POST" action="update_avis.php?id_avis=<?=htmlspecialchars($avis['id_avis'])?>">
 
-  <input type="hidden" name="id_avis" value="<?=$avis['id_avis']?>"/>
+  <input type="hidden" name="id_avis" value="<?=htmlspecialchars($avis['id_avis'])?>"/>
 
   <label for="firstname">Prénom <span aria-label="required">*</span></label>
-<input type="text" id="firstname" name="firstname" value="<?=$avis['firstname']?>" required/>
+<input type="text" id="firstname" name="firstname" value="<?=htmlspecialchars($avis['firstname'])?>" required/>
 
-<p class="text_avis_validate"><?= $avis['avis'] ?></p>
+<p class="text_avis_validate"><?=htmlspecialchars($avis['avis'])?></p>
 
 <input type="hidden" name="status" value="valid"/>
 

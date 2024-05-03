@@ -10,11 +10,9 @@ if(($_SESSION['user']['role']) === null) {
   redirect();
  }
 ?>
+<main class="min_height">
 
-
-  <h1 class="title_index">Bienvenue dans votre espace <?= $_SESSION['user']['firstname'] ?></h1>
-
-
-
+<h1 class="title_index">Bienvenue dans votre espace <?= $_SESSION['user']['firstname'] ?></h1>
+</main>
 
 <?php require_once '../admin/footer.php';?>

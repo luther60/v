@@ -1,3 +1,4 @@
+<?php require_once './lib/csp.php';  ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>

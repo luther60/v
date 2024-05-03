@@ -5,7 +5,7 @@ require_once __DIR__.'/../../config/users.php';
 require_once __DIR__.'/../../config/error.php';
 if(($_SESSION['user']['role']) === null) { 
   redirect();
- }elseif(($_SESSION['user']['role']) != 'beta') {
+ }elseif(($_SESSION['user']['role']) != 'admin') {
   getMessage();
  }
 
@@ -15,7 +15,7 @@ if(isset($_POST['create_user']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   //Traitement de chaque entrée utilisateur
   if(isset($_POST['name'])) {
     $name_sanitize = htmlentities($_POST['name']);
-    if(!preg_match("/^[a-zA-Z-' ]*$/",$name_sanitize)) {
+    if(!preg_match("/^[a-zA-Z-' éèç]*$/",$name_sanitize)) {
       echo '<h1 class=\'alert\'>Le format utilisé pour le nom est incorrect !! </h1>';
     }else {
       $name = $name_sanitize;
@@ -24,7 +24,7 @@ if(isset($_POST['create_user']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
   if(isset($_POST['firstname'])) {
     $firstname_sanitize = htmlentities($_POST['firstname'],);
-    if(!preg_match("/^[a-zA-Z-' ]*$/",$firstname_sanitize)) {
+    if(!preg_match("/^[a-zA-Z-' éèç]*$/",$firstname_sanitize)) {
       echo '<h1 class=\'alert\'>Le format utilisé pour le prénom est incorrect !! </h1>';
     } else {
       $firstname = $firstname_sanitize;
@@ -52,7 +52,7 @@ if(isset($_POST['create_user']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
   //Si erreur sur l'une des variables
   $role = 'beta';
-  if(empty($name) || empty($firstname) || empty($mail) || empty($password) || empty($role)) {
+  if(empty($name) || empty($firstname) || (empty($mail) || $mail === false) || empty($password) || empty($role)) {
   echo '<h1 class=\'alert\'>La création de l\'utilisateur à échoué !! </h1>';
 } else {
   //Si tout est OK
@@ -74,7 +74,7 @@ if(isset($_POST['create_user']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   <input id="name" type="text" name="name" required />
 
   <label for="firstname">Prénom&nbsp;:<span aria-label="required">*</span></label>
-  <input id="firstname" type="text" name="firstname" />
+  <input id="firstname" type="text" name="firstname" required/>
 
   <label for="mail">Email&nbsp;:<span aria-label="required">*</span></label>
   <input id="mail" type="text" name="mail" required />

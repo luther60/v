@@ -18,21 +18,19 @@ if(($_SESSION['user']['role']) === null) {
 
 <div class="content_user btn_modify"><a class="link_modify" href="create_user.php">Créer un nouvel utilisateur</a></div>
 
-<main id="main_user">
-<section >
-  <?php foreach($users as $user) { ?>
-    
-  <article class="card_user">
-    <p class="content_user"><?= $user['name'] ?></p>
-    <p class="content_user"><?= $user['firstname'] ?></p>
-    <p class="content_user"><?= $user['mail'] ?></p>
-    <p class="content_user"><?= $user['role'] ?></p>
-    <div class="content_user btn_modify"><a class="link_modify" href="update_user.php?id_user=<?= $user['id_user']?>">Modifier</a></div>
-    <div class="content_user btn_modify"><a class="link_modify" href="delete_user.php?id_user=<?=$user['id_user']?>">Supprimer</a></div>
-  </article>
-  
-  <?php } ?>  
-</section>
+<main>
+  <section id="parent_avis">
+    <?php foreach($users as $user) { ?>
+    <article class="card_avis">
+    <h2 class="h_avis"><?=htmlspecialchars($user['name'])?></h2>
+    <h2 class="h_avis"><?=htmlspecialchars($user['firstname'])?></h2>
+    <h2 class="h_avis"><?=htmlspecialchars($user['mail'])?></h2>
+    <p class="text_avis"><?=htmlspecialchars($user['role'])?></p>
+    <div class="content_user btn_modify"><a class="link_modify" href="update_user.php?id_user=<?= htmlspecialchars($user['id_user'])?>">Modifier</a></div>
+    <div class="content_user btn_modify"><a class="link_modify" href="delete_user.php?id_user=<?=htmlspecialchars($user['id_user'])?>">Supprimer</a></div>
+    </article>
+    <?php } ?>
+  </section>
 </main>
 
 <?php require_once __DIR__. '/../footer.php';?>

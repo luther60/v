@@ -2,9 +2,10 @@
 require_once __DIR__.'/template/header.php'; 
 require_once __DIR__.'/lib/pdo.php';
 require_once __DIR__.'/config/avis.php';
-$avisTrue = getPostTrue($pdo);
+$avisTrue = getPostLimit($pdo);
 $avisFilter = json_encode($avisTrue);
 $trueAvis = file_put_contents('./json/avis.json',$avisFilter);
+
  ?>
 
 <body>
@@ -12,10 +13,6 @@ $trueAvis = file_put_contents('./json/avis.json',$avisFilter);
   <main>
     <div id="img_home"><img id="img_main" src="../assets/default.jpg" alt="car home"/></div>
     
-  <?php
-  
-  ?>
-
    <h1 class="title_index">Bienvenue chez Monsieur Parrot, votre garagiste de confiance !</h1>
     <!--Bloc 1 -->
     <section class='content_article'>
@@ -187,7 +184,7 @@ $trueAvis = file_put_contents('./json/avis.json',$avisFilter);
     <div class="validateAvis"></div>
   </main>
 </body>
-<script src='../javascript/style.js'></script>
-<script src='../javascript/avis.js' type="module"></script>
+<script nonce="${nonce}" src='../javascript/style.js'></script>
+<script nonce="${nonce}" src='../javascript/avis.js' type="module"></script>
 <?php require_once __DIR__.'/template/footer.php'; ?>
 </html>

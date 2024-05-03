@@ -21,6 +21,9 @@ for(let i = 0; i < posts.length; i++) {
   //Création de la div contenair
   const container = document.createElement('div')
   container.classList.add('container')
+  //Création de la date
+  const date = document.createElement('p')
+  date.innerText = posts[i].date_post
   //Creation du titre
   const titlePost = document.createElement('h2')
   titlePost.innerText = posts[i].firstname
@@ -39,12 +42,13 @@ for(let i = 0; i < posts.length; i++) {
     case '5': star.innerText = stars[4].s5;
     break;
   }
-  //Crétion du text
+  //Création du text
   const textPost = document.createElement('p')
   textPost.innerText = posts[i].avis
  
   //Noeud enfant
   divPost.appendChild(container)
+  container.appendChild(date)
   container.appendChild(titlePost)
   container.appendChild(star)
   container.appendChild(textPost)

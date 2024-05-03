@@ -3,9 +3,16 @@ require_once 'header_car.php';
 require_once __DIR__.'/../../lib/pdo.php';
 require_once __DIR__.'/../../config/vehicules.php';
 require_once __DIR__.'/../../config/error.php';
-$vehicule = getVehiculeById($pdo,$_GET['id_car']);
-$options = getVehiculesOptions($pdo,$_GET['id_car']);
-$images = getVehiculesImg($pdo,$_GET['id_car']);
+if(isset($_GET['id_car'])){
+  try{
+  $vehicule = getVehiculeById($pdo,$_GET['id_car']);
+  $options = getVehiculesOptions($pdo,$_GET['id_car']);
+  $images = getVehiculesImg($pdo,$_GET['id_car']);
+}catch(Exception $e){
+    echo"Capture de l'exception !".$e->getMessage();
+};
+}
+
 /*Vérification de l'user connecté, si pas de session, on redirige vers accueil 
 (A la fermeture du client, la session est détruite)*/
 if(($_SESSION['user']['role']) === null) { 

@@ -11,7 +11,14 @@ if(($_SESSION['user']['role']) === null) {
  }elseif(($_SESSION['user']['role']) != 'admin') {
   getMessage();
  }
-$user = userById($pdo,$_GET['id_user']);
+
+ if(isset($_GET['id_user'])){
+  try{
+  $user = userById($pdo,$_GET['id_user']);
+}catch(Exception $e){
+    echo"Capture de l'exception !".$e->getMessage();
+};
+}
 
 ?>
 
@@ -29,7 +36,7 @@ if(isset($_POST['update_user']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
   if(isset($_POST['name'])) {
     $name_sanitize = htmlentities($_POST['name']);
-    if(!preg_match("/^[a-zA-Z -]+$/",$name_sanitize)) {
+    if(!preg_match("/^[a-zA-Z -éèç]+$/",$name_sanitize)) {
       echo '<h1 class=\'alert\'>Le format utilisé pour le nom est incorrect !! </h1>';
     } else {
       $name = $name_sanitize;
@@ -38,7 +45,7 @@ if(isset($_POST['update_user']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
   if(isset($_POST['firstname'])) {
     $firstname_sanitize = htmlentities($_POST['firstname']);
-    if(!preg_match("/^[a-zA-Z -]+$/",$firstname_sanitize)) {
+    if(!preg_match("/^[a-zA-Z -éèç]+$/",$firstname_sanitize)) {
       echo '<h1 class=\'alert\'>Le format utilisé pour le prénom est incorrect !! </h1>';
     } else {
       $firstname = $firstname_sanitize;
@@ -64,7 +71,7 @@ if(isset($_POST['update_user']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   }
   
   //Si erreur sur l'une des variables
-  if(empty($name) || empty($firstname) || empty($mail) || empty($id_user) || empty($role)) {
+  if(empty($name) || empty($firstname) || (empty($mail) || $mail === false) || empty($id_user) || empty($role)) {
     echo '<h1 class=\'alert\'>La modification de l\'utilisateur à échoué !! </h1>';
   } else {
     //Si tout est OK
@@ -76,21 +83,21 @@ if(isset($_POST['update_user']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 
-<form method="POST" action="update_user.php?id_user=<?=$_GET['id_user']?>">
+<form method="POST" action="update_user.php?id_user=<?=$_GET['id_user']?>">htmlspecialchars
 
-<input type="hidden" id="id_user" name="id_user" value="<?= htmlentities($user['id_user'] )?>" required/>
+<input type="hidden" id="id_user" name="id_user" value="<?= htmlspecialchars($user['id_user'] )?>" required/>
 
 <label for="name">Nom <span aria-label="required">*</span></label>
-<input type="text" id="name" name="name" value="<?= htmlentities($user['name'] )?>" required/>
+<input type="text" id="name" name="name" value="<?= htmlspecialchars($user['name'] )?>" required/>
 
 <label for="firstname">Prénom <span aria-label="required">*</span></label>
-<input type="text" id="firstname" name="firstname" value="<?= htmlentities($user['firstname']) ?>" required/>
+<input type="text" id="firstname" name="firstname" value="<?= htmlspecialchars($user['firstname']) ?>" required/>
 
 <label for="mail">Téléphone <span aria-label="required">*</span></label>
-<input type="text" id="mail" name="mail" value="<?= htmlentities($user['mail']) ?>" required/>
+<input type="text" id="mail" name="mail" value="<?= htmlspecialchars($user['mail']) ?>" required/>
 
 <label for="role">Email <span aria-label="required">*</span></label>
-<input type="text" id="role" name="role" value="<?= htmlentities($user['role']) ?>" required/>
+<input type="text" id="role" name="role" value="<?= htmlspecialchars($user['role']) ?>" required/>
 
 <input class="b_update" type="submit" name="update_user" value="Modifier"/>
 

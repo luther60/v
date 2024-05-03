@@ -1,3 +1,7 @@
+<?php 
+require_once __DIR__.'/../../lib/csp.php'; 
+require_once __DIR__.'/../../lib/ini.php';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -27,7 +31,7 @@
     </div>
     <div class="lien">
       <img class="icon" src="/assets/mail.png" alt="icone message">
-      <li><a class='nav_link' href="../admin/messages/contact.php">Messages</a></li>
+      <li><a class='nav_link' href="../message/message.php">Messages</a></li>
     </div>
     <div class="lien">
       <img class="icon" src="/assets/avis.png" alt="icone avis">

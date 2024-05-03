@@ -1,3 +1,8 @@
+<?php
+ require_once __DIR__.'/../../lib/csp.php'; 
+ require_once __DIR__.'/../../lib/ini.php'; 
+ ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -12,10 +17,10 @@
 <header>
   <!--First nav -->
   <nav class="head">
-    <h1 class="logo"><a href='accueil_admin.php'>Garage V.Parrot</a></h1>
+    <h1 class="logo"><a href='/admin/accueil_admin.php'>Garage V.Parrot</a></h1>
     <div class="content_login">
     <img class="icon" src="/assets/logout.png" alt="icone accueil">
-    <h2><a class="login_link"  href="../config/logout.php">Se déconnecter</a></h2>
+    <h2><a class="login_link"  href="/config/logout.php">Se déconnecter</a></h2>
     </div>
   </nav>
   <!--Second nav -->
@@ -23,15 +28,15 @@
     <ul class="link_category">
     <div class="lien">
       <img class="icon" src="/assets/cars_home.png" alt="icone accueil véhicule">
-      <li><a class='nav_link' href="../admin/vehicules.php">Véhicules</a></li>
+      <li><a class='nav_link' href="../cars/vehicules.php">Véhicules</a></li>
     </div>
     <div class="lien">
       <img class="icon" src="/assets/mail.png" alt="icone message">
-      <li><a class='nav_link' href="../admin/messages/contact.php">Messages</a></li>
+      <li><a class='nav_link' href="../message/message.php">Messages</a></li>
     </div>
     <div class="lien">
       <img class="icon" src="/assets/avis.png" alt="icone avis">
-      <li><a class='nav_link' href="../admin/avis/post_avis.php">Avis</a></li>
+      <li><a class='nav_link' href="../avis/read_avis.php">Avis</a></li>
     </div>
     </ul>
   </nav>

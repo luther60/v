@@ -12,17 +12,14 @@ const section = document.querySelector('.bloc_card')
 function getCars(cars) {
 
   for(let i = 0; i < cars.length; i++) {
-  
+
 const article = document.createElement('article')
 article.classList.add('card_car')
-
 const img = document.createElement('img')
 img.classList.add('img_card')
 img.src = 'admin'+cars[i].img
-
 const div = document.createElement('div')
 div.classList.add('text_card')
-
 const marque = document.createElement('h2')
 marque.innerText = cars[i].marque+' '+cars[i].modele
 const km = document.createElement('p')

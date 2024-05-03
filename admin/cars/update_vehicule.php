@@ -1,5 +1,4 @@
 <?php
-ini_set('display_errors', 'on');
  session_start();
 require_once 'header_car.php';
 require_once __DIR__.'/../../lib/pdo.php';
@@ -8,10 +7,16 @@ require_once __DIR__.'/../../config/error.php';
 if(($_SESSION['user']['role']) === null) { 
   redirect();
  }
- $vehicule = getVehiculeById($pdo,$_GET['id_car']);
- $options = getVehiculesOptions($pdo,$_GET['id_car']);
- $images = getVehiculesImg($pdo,$_GET['id_car']);
-
+ if(isset($_GET['id_car'])){
+  try{
+  $vehicule = getVehiculeById($pdo,$_GET['id_car']);
+  $options = getVehiculesOptions($pdo,$_GET['id_car']);
+  $images = getVehiculesImg($pdo,$_GET['id_car']);
+}catch(Exception $e){
+    echo"Capture de l'exception !".$e->getMessage();
+};
+}
+ 
 ?>
 
 <?php
@@ -22,36 +27,36 @@ if(isset($_POST['update_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
   //Traitement de chaque entrée utilisateur
   if(isset($_POST['marque'])) {
-    $marque_sanitize = htmlentities($_POST['marque']);
+    $marque_sanitize = htmlspecialchars($_POST['marque']);
     if(!preg_match("/^[a-zA-Z-' 0-9]*$/",$marque_sanitize)) {
-      echo '<h1 class=\'alert\'>Le format utilisé pour le nom de la marque est incorrect !! </h1>';
+      echo '<h1 class=\'alert\'>Certains caractères utilisé pour le nom de la marque sont incorrect !! </h1>';
     }else {
       $marque = $marque_sanitize;
     }
   }
 
   if(isset($_POST['modele'])) {
-    $modele_sanitize = htmlentities($_POST['modele'],);
+    $modele_sanitize = htmlspecialchars($_POST['modele'],);
     if(!preg_match("/^[a-zA-Z-' 0-9]*$/",$modele_sanitize)) {
-      echo '<h1 class=\'alert\'>Le format utilisé pour le nom du modèle est incorrect !! </h1>';
+      echo '<h1 class=\'alert\'>Certains caractères utilisé pour le nom du modèle sont incorrect !! </h1>';
     } else {
       $modele = $modele_sanitize;
     }
   }
 
   if(isset($_POST['annee'])) {
-    $annee_sanitize = htmlentities($_POST['annee']);
+    $annee_sanitize = htmlspecialchars($_POST['annee']);
     if(!preg_match("/^[ 0-9]*$/",$annee_sanitize)) {
-      echo '<h1 class=\'alert\'>Le format utilisé pour l\année est incorrect !! </h1>';
+      echo '<h1 class=\'alert\'>Certains caractères utilisé pour l\année sont incorrect !! </h1>';
     }else {
       $annee = $annee_sanitize;
     }
   }
 
   if(isset($_POST['km'])) {
-    $km_sanitize = htmlentities($_POST['km']);
+    $km_sanitize = htmlspecialchars($_POST['km']);
     if(!preg_match("/^[ 0-9]*$/",$km_sanitize)) {
-      echo '<h1 class=\'alert\'>Le format utilisé pour le kilométrage est incorrect !! </h1>';
+      echo '<h1 class=\'alert\'>Certains caractères utilisé pour le kilométrage sont incorrect !! </h1>';
     }else {
       $km = $km_sanitize;
     }
@@ -70,7 +75,7 @@ if(isset($_POST['update_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   if(isset($_POST['cv'])) {
     $cv_sanitize = htmlentities($_POST['cv']);
     if(!preg_match("/^[a-zA-Z-' 0-9]*$/",$cv_sanitize)) {
-      echo '<h1 class=\'alert\'>Le format utilisé pour les CV est incorrect !! </h1>';
+      echo '<h1 class=\'alert\'>Certains caractères utilisé pour les CV sont incorrect !! </h1>';
     }else {
       $cv = $cv_sanitize;
     }
@@ -79,29 +84,29 @@ if(isset($_POST['update_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   if(isset($_POST['prix'])) {
     $prix_sanitize = htmlentities($_POST['prix']);
     if(!preg_match("/^[ 0-9]*$/",$prix_sanitize)) {
-      echo '<h1 class=\'alert\'>Le format utilisé pour le prix est incorrect !! </h1>';
+      echo '<h1 class=\'alert\'>Certains caractères utilisé pour le prix sont incorrect !! </h1>';
     }else {
       $prix = $prix_sanitize;
     }
   }
 
   if(isset($_POST['exterieur'])) {
-    $exterieur_sanitize = htmlentities($_POST['exterieur']);
+    $exterieur_sanitize = htmlspecialchars($_POST['exterieur']);
     $exterieur = $exterieur_sanitize;
     }
   
   if(isset($_POST['interieur'])) {
-    $interieur_sanitize = htmlentities($_POST['interieur']);
+    $interieur_sanitize = htmlspecialchars($_POST['interieur']);
     $interieur = $interieur_sanitize;
     }
   
   if(isset($_POST['securite'])) {
-    $securite_sanitize = htmlentities($_POST['securite']);
+    $securite_sanitize = htmlspecialchars($_POST['securite']);
     $securite = $securite_sanitize;
     }
   
   if(isset($_POST['confort'])) {
-    $confort_sanitize = htmlentities($_POST['confort']);
+    $confort_sanitize = htmlspecialchars($_POST['confort']);
      $confort = $confort_sanitize;
     }
   
@@ -228,22 +233,22 @@ if(isset($_POST['update_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   </div>
 
   <label for="cv">CV&nbsp;:<span aria-label="required">*</span></label>
-  <input id="cv" type="text" value="<?=htmlentities($vehicule['cv'])?>" name="cv" required />
+  <input id="cv" type="text" value="<?=htmlspecialchars($vehicule['cv'])?>" name="cv" required />
 
   <label for="prix">Prix&nbsp;:<span aria-label="required">*</span></label>
-  <input id="prix" type="text" value="<?=htmlentities($vehicule['prix'])?>" name="prix" required />
+  <input id="prix" type="text" value="<?=htmlspecialchars($vehicule['prix'])?>" name="prix" required />
 
   <label for="exterieur">Options extérieur&nbsp;:<span aria-label="required">*</span></label>
-  <textarea id="exterieur" name="exterieur"  cols="60" rows="5" placeholder="Options extérieur"><?=htmlentities($options['exterieur'])?></textarea>
+  <textarea id="exterieur" name="exterieur"  cols="60" rows="5" placeholder="Options extérieur"><?=htmlspecialchars($options['exterieur'])?></textarea>
 
   <label for="interieur">Options intérieur&nbsp;:<span aria-label="required">*</span></label>
-  <textarea id="interieur" name="interieur"  cols="60" rows="5" placeholder="Options intérieur"><?=htmlentities($options['interieur'])?></textarea>
+  <textarea id="interieur" name="interieur"  cols="60" rows="5" placeholder="Options intérieur"><?=htmlspecialchars($options['interieur'])?></textarea>
 
   <label for="securite">Options sécurité&nbsp;:<span aria-label="required">*</span></label>
-  <textarea id="securite" name="securite"  cols="60" rows="5" placeholder="Options sécurité"><?=htmlentities($options['securite'])?></textarea>
+  <textarea id="securite" name="securite"  cols="60" rows="5" placeholder="Options sécurité"><?=htmlspecialchars($options['securite'])?></textarea>
 
   <label for="confort">Options confort&nbsp;:<span aria-label="required">*</span></label>
-  <textarea id="confort" name="confort"  cols="60" rows="5" placeholder="Options confort"><?=htmlentities($options['confort'])?></textarea>
+  <textarea id="confort" name="confort"  cols="60" rows="5" placeholder="Options confort"><?=htmlspecialchars($options['confort'])?></textarea>
 
   <label for="img">Ajouter une image principale&nbsp;:<span>*</span></label>
   <input type="file" name="img_default" required>

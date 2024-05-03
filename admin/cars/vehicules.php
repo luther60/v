@@ -14,7 +14,7 @@ $carsForJs = json_encode($vehicules);
 $carsFiles = file_put_contents(__DIR__.'/../../json/vehicules.json',$carsForJs);
 ?>
 
-<h1 class="title_index">Bienvenue dans votre espace de gestion des vehicules <?= $_SESSION['user']['firstname'] ?></h1>
+<h1 class="title_index">Bienvenue dans votre espace de gestion des vehicules <?=htmlspecialchars($_SESSION['user']['firstname'])?></h1>
 
 <div class="content_user btn_modify"><a class="link_modify" href="create_vehicule.php">Créer un nouveau vehicule</a></div>
 
@@ -27,15 +27,15 @@ $carsFiles = file_put_contents(__DIR__.'/../../json/vehicules.json',$carsForJs);
     <?php if($vehicule['img'] == null) { ?>
       <img id="img_card" src="/../../admin/upload_img/backcars2.jpg" alt=""/>
     <?php }else{ ?>
-    <img class="img_card" src="<?= $vehicule['img'] ?>" alt="<?= $vehicule['img'] ?>"/>
+    <img class="img_card" src="<?=htmlspecialchars($vehicule['img'])?>" alt="<?=htmlspecialchars($vehicule['img'])?>"/>
     <?php } ?>
 
     <div class="text_card">
-    <h2><?= $vehicule['marque'].' '.$vehicule['modele'] ?></h2>
-    <p><?= $vehicule['km'] ?></p>
-    <p><?= $vehicule['annee'] ?></p>
-    <h2><?= $vehicule['prix'] ?>€</h2>
-    <div class="link_car"><a href="vehicules_details.php?id_car=<?= $vehicule['id_car'] ?>">Détails</a></div>
+    <h2><?=htmlspecialchars($vehicule['marque']).' '.htmlspecialchars($vehicule['modele'])?></h2>
+    <p><?=htmlspecialchars($vehicule['km'])?></p>
+    <p><?=htmlspecialchars($vehicule['annee'])?></p>
+    <h2><?=htmlspecialchars($vehicule['prix'])?>€</h2>
+    <div class="link_car"><a href="vehicules_details.php?id_car=<?=htmlspecialchars($vehicule['id_car'])?>">Détails</a></div>
     </div>
   </article>
   <?php }  ?>

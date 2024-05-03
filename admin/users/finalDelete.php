@@ -15,9 +15,13 @@ if(($_SESSION['user']['role']) === null) {
 <?php
 
 if(isset($_GET['id_user'])) {
-
+  try{
    $userDelete = deleteUser($pdo, $_GET['id_user']);
    echo'<h1 class="title_index">L\'utilisateur à été définitivement supprimé !!</h1>';
+  }catch(Exception $e){
+      echo"Capture de l'exception !".$e->getMessage();
+  };
+   
  }
  ?>
 

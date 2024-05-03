@@ -1,5 +1,5 @@
 <?php 
- require_once '../admin/header_admin.php';
+ require_once 'header_admin.php';
  require_once '../lib/pdo.php';
  require_once '../config/users.php';
  require_once '../config/error.php';
@@ -25,21 +25,31 @@ if(isset($_POST['login']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
       redirect();
     }
   }
-  var_dump($user);
+  
   //Si user existe bien
   if($user) {
     if($user['role'] === 'admin') {
       session_start();
       session_regenerate_id(true);
       $_SESSION['user'] = $user;
-      setcookie("useradmin", 'admin', time()+3600, '/');
+      setcookie("useradmin", 'admin',array(
+        'expires' => time()+3600,
+        'path' =>'/',
+        /*'secure' => true,*/
+        'httponly' => true,
+        'samesite' => 'Strict'));
       header("location: accueil_admin.php");
     }
     if($user['role'] === 'beta') {
       session_start();
       session_regenerate_id(true);
       $_SESSION['user'] = $user;
-      setcookie("user", 'user', time() + 3600, '/');
+      setcookie("user", 'user',array(
+        'expires' => time()+3600,
+        'path' =>'/',
+        /*'secure' => true,*/
+        'httponly' => true,
+        'samesite' => 'Strict'));
       header("location: accueil_admin.php");
   }
 
