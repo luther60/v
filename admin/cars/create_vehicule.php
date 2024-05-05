@@ -1,10 +1,10 @@
 <?php
-ini_set('display_errors', 'on');
  session_start();
 require_once 'header_car.php';
 require_once __DIR__.'/../../lib/pdo.php';
 require_once __DIR__.'/../../config/vehicules.php';
 require_once __DIR__.'/../../config/error.php';
+require_once __DIR__.'/../../lib/ini.php';
 if(($_SESSION['user']['role']) === null) { 
   redirect();
  }
@@ -20,7 +20,7 @@ if(isset($_POST['create_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   if(isset($_POST['marque'])) {
     $marque_sanitize = htmlspecialchars($_POST['marque']);
     if(!preg_match("/^[a-zA-Z-' 0-9]*$/",$marque_sanitize)) {
-      echo '<h1 class=\'alert\'>Le format utilisé pour le nom de la marque est incorrect !! </h1>';
+      echo '<h1 class=\'alert\'>Certains caractères utilisé pour le nom de la marque sont incorrect !! </h1>';
     }else {
       $marque = $marque_sanitize;
     }
@@ -29,7 +29,7 @@ if(isset($_POST['create_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   if(isset($_POST['modele'])) {
     $modele_sanitize = htmlspecialchars($_POST['modele'],);
     if(!preg_match("/^[a-zA-Z-' 0-9]*$/",$modele_sanitize)) {
-      echo '<h1 class=\'alert\'>Le format utilisé pour le nom du modèle est incorrect !! </h1>';
+      echo '<h1 class=\'alert\'>Certains caractères utilisé pour le nom du modèle sont incorrect !! </h1>';
     } else {
       $modele = $modele_sanitize;
     }
@@ -38,7 +38,7 @@ if(isset($_POST['create_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   if(isset($_POST['annee'])) {
     $annee_sanitize = htmlspecialchars($_POST['annee']);
     if(!preg_match("/^[ 0-9]*$/",$annee_sanitize)) {
-      echo '<h1 class=\'alert\'>Le format utilisé pour l\année est incorrect !! </h1>';
+      echo '<h1 class=\'alert\'>Certains caractères utilisé pour l\année sont incorrect !! </h1>';
     }else {
       $annee = $annee_sanitize;
     }
@@ -47,7 +47,7 @@ if(isset($_POST['create_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   if(isset($_POST['km'])) {
     $km_sanitize = htmlspecialchars($_POST['km']);
     if(!preg_match("/^[ 0-9]*$/",$km_sanitize)) {
-      echo '<h1 class=\'alert\'>Le format utilisé pour le kilométrage est incorrect !! </h1>';
+      echo '<h1 class=\'alert\'>Certains caractères utilisé pour le kilométrage sont incorrect !! </h1>';
     }else {
       $km = $km_sanitize;
     }
@@ -66,7 +66,7 @@ if(isset($_POST['create_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   if(isset($_POST['cv'])) {
     $cv_sanitize = htmlspecialchars($_POST['cv']);
     if(!preg_match("/^[a-zA-Z-' 0-9]*$/",$cv_sanitize)) {
-      echo '<h1 class=\'alert\'>Le format utilisé pour les CV est incorrect !! </h1>';
+      echo '<h1 class=\'alert\'>Certains caractères utilisé pour les CV sont incorrect !! </h1>';
     }else {
       $cv = $cv_sanitize;
     }
@@ -75,7 +75,7 @@ if(isset($_POST['create_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   if(isset($_POST['prix'])) {
     $prix_sanitize = htmlspecialchars($_POST['prix']);
     if(!preg_match("/^[ 0-9]*$/",$prix_sanitize)) {
-      echo '<h1 class=\'alert\'>Le format utilisé pour le prix est incorrect !! </h1>';
+      echo '<h1 class=\'alert\'>Certains caractères utilisé pour le prix sont incorrect !! </h1>';
     }else {
       $prix = $prix_sanitize;
     }
@@ -83,22 +83,38 @@ if(isset($_POST['create_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
   if(isset($_POST['exterieur'])) {
     $exterieur_sanitize = htmlspecialchars($_POST['exterieur']);
-    $exterieur = $exterieur_sanitize;
+    if(!preg_match("/^[[:alnum:][:punct:][:space:]èéç]+$/",$exterieur_sanitize)) {
+      echo '<h1 class=\'alert\'>Certains caractères utilisé pour le message sont incorrect où le champs est resté vide !! </h1>';
+    }else{
+      $exterieur = $exterieur_sanitize;
+    }
     }
   
   if(isset($_POST['interieur'])) {
     $interieur_sanitize = htmlspecialchars($_POST['interieur']);
-    $interieur = $interieur_sanitize;
+    if(!preg_match("/^[[:alnum:][:punct:][:space:]èéç]+$/",$interieur_sanitize)) {
+      echo '<h1 class=\'alert\'>Certains caractères utilisé pour le message sont incorrect où le champs est resté vide !! </h1>';
+    }else{
+      $interieur = $interieur_sanitize;
+    }
     }
   
   if(isset($_POST['securite'])) {
     $securite_sanitize = htmlspecialchars($_POST['securite']);
-    $securite = $securite_sanitize;
+    if(!preg_match("/^[[:alnum:][:punct:][:space:]èéç]+$/",$securite_sanitize)) {
+      echo '<h1 class=\'alert\'>Certains caractères utilisé pour le message sont incorrect où le champs est resté vide !! </h1>';
+    }else{
+      $securite = $securite_sanitize;
+    }
     }
   
   if(isset($_POST['confort'])) {
     $confort_sanitize = htmlspecialchars($_POST['confort']);
-    $confort = $confort_sanitize;
+    if(!preg_match("/^[[:alnum:][:punct:][:space:]èéç]+$/",$confort_sanitize)) {
+      echo '<h1 class=\'alert\'>Certains caractères utilisé pour le message sont incorrect où le champs est resté vide !! </h1>';
+    }else{
+      $confort = $confort_sanitize;
+    }
     }
   
   //Traitement image default

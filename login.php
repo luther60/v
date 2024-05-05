@@ -8,7 +8,7 @@ require_once __DIR__.'/template/header.php';
 <input type="text" id="mail" name="mail" placeholder="Email" required/>
 
 <label for="password">Mot de passe <span aria-label="required">*</span></label>
-<input type="text" id="password" name="password" placeholder="Mot de passe" required/>
+<input type="password" id="password" name="password" placeholder="Mot de passe" required/>
 
 <input class="call_car" type="submit" name="login" value="se connecter">
 

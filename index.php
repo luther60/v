@@ -2,9 +2,17 @@
 require_once __DIR__.'/template/header.php'; 
 require_once __DIR__.'/lib/pdo.php';
 require_once __DIR__.'/config/avis.php';
-$avisTrue = getPostLimit($pdo);
-$avisFilter = json_encode($avisTrue);
-$trueAvis = file_put_contents('./json/avis.json',$avisFilter);
+require_once __DIR__.'/lib/csp.php';
+require_once __DIR__.'/lib/ini.php';
+
+try{
+  $avisTrue = getPostLimit($pdo);
+  $avisFilter = json_encode($avisTrue);
+  $trueAvis = file_put_contents('./json/avis.json',$avisFilter);
+}catch(Exception $e){
+  echo"Capture de l'exception !".$e->getMessage();
+}
+
 
  ?>
 
@@ -16,7 +24,7 @@ $trueAvis = file_put_contents('./json/avis.json',$avisFilter);
    <h1 class="title_index">Bienvenue chez Monsieur Parrot, votre garagiste de confiance !</h1>
     <!--Bloc 1 -->
     <section class='content_article'>
-    <img class="img_right" src="./assets/cars1.jpg">
+    <img class="img_right" src="./assets/cars1.jpg" alt="cars1">
       <article class="text_right">
       <p>Depuis 15 ans, M. Parrot met son expertise et sa passion de l'automobile au service des automobilistes.</p> 
     
@@ -66,7 +74,7 @@ $trueAvis = file_put_contents('./json/avis.json',$avisFilter);
       <div class="link_contact"><a   href="contact.php">Contact</a></div>
       <input id="btn2" type='button' value="Détails">
       </article>
-      <img class="img_left" src="./assets/cars2.jpg">
+      <img class="img_left" src="./assets/cars2.jpg" alt="cars2">
     </section>
     <!--Sous bloc2 -->  
     <section class="sous_bloc2">
@@ -87,7 +95,7 @@ $trueAvis = file_put_contents('./json/avis.json',$avisFilter);
     </section>
     <!--Bloc 3 -->
     <section class='content_article'>
-    <img class="img_right" src="./assets/cars1.jpg">
+    <img class="img_right" src="./assets/cars1.jpg" alt="cars1">
       <article class="text_right"> 
     
       <h2>Vous avez besoin d'un garagiste fiable et expérimenté pour réparer votre véhicule ?</h2>
@@ -122,7 +130,7 @@ $trueAvis = file_put_contents('./json/avis.json',$avisFilter);
       automobile. Nous intervenons sur tous types de véhicules, toutes marques et tous modèles.</p>
       <input id="btn4" type='button' value="Détails">
       </article>
-      <img class="img_left" src="./assets/cars2.jpg">
+      <img class="img_left" src="./assets/cars2.jpg" alt="cars2">
     </section>
     <!--Sous bloc4 -->  
     <section class="sous_bloc4">
@@ -148,7 +156,7 @@ $trueAvis = file_put_contents('./json/avis.json',$avisFilter);
     </section>
     <!--Bloc 5 -->
     <section class='content_article'>
-    <img class="img_right" src="./assets/cars1.jpg">
+    <img class="img_right" src="./assets/cars1.jpg" alt="cars1">
       <article class="text_right"> 
     
       <h2>Pourquoi acheter votre voiture d'occasion chez Mr Parrot ?</h2>

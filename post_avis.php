@@ -43,7 +43,7 @@ if(isset($_POST['post_avis']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
       }    
       }  
 
-      $date = date("28/04/2024");
+      $date = date("d/m/Y");
 
   if(empty($firstname) || empty($avis) || empty($note) || empty($status)) {
     echo"<h1 class=alert> Echec lors de l'envoi de l'avis !!</h1>";

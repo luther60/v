@@ -13,7 +13,7 @@
 <header>
   <!--First nav -->
   <nav class="head">
-    <h1 class="logo"><a href='../index.php'>Garage V.Parrot</a></h1>
+    <h1 class="logo"><a class="logo" href='../index.php'>Garage V.Parrot</a></h1>
     <div class="content_login">
     <img class="icon" src="/assets/home.png" alt="icone accueil">
     <h2><a class="login_link"  href="login.php">Espace pro</a></h2>

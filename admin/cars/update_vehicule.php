@@ -92,22 +92,38 @@ if(isset($_POST['update_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
   if(isset($_POST['exterieur'])) {
     $exterieur_sanitize = htmlspecialchars($_POST['exterieur']);
-    $exterieur = $exterieur_sanitize;
+    if(!preg_match("/^[[:alnum:][:punct:][:space:]èéç]+$/",$exterieur_sanitize)) {
+      echo '<h1 class=\'alert\'>Certains caractères utilisé pour le message sont incorrect où le champs est resté vide !! </h1>';
+    }else{
+      $exterieur = $exterieur_sanitize;
+    }
     }
   
   if(isset($_POST['interieur'])) {
     $interieur_sanitize = htmlspecialchars($_POST['interieur']);
-    $interieur = $interieur_sanitize;
+    if(!preg_match("/^[[:alnum:][:punct:][:space:]èéç]+$/",$interieur_sanitize)) {
+      echo '<h1 class=\'alert\'>Certains caractères utilisé pour le message sont incorrect où le champs est resté vide !! </h1>';
+    }else{
+      $interieur = $interieur_sanitize;
+    }
     }
   
   if(isset($_POST['securite'])) {
     $securite_sanitize = htmlspecialchars($_POST['securite']);
-    $securite = $securite_sanitize;
+    if(!preg_match("/^[[:alnum:][:punct:][:space:]èéç]+$/",$securite_sanitize)) {
+      echo '<h1 class=\'alert\'>Certains caractères utilisé pour le message sont incorrect où le champs est resté vide !! </h1>';
+    }else{
+      $securite = $securite_sanitize;
+    }
     }
   
   if(isset($_POST['confort'])) {
     $confort_sanitize = htmlspecialchars($_POST['confort']);
-     $confort = $confort_sanitize;
+    if(!preg_match("/^[[:alnum:][:punct:][:space:]èéç]+$/",$confort_sanitize)) {
+      echo '<h1 class=\'alert\'>Certains caractères utilisé pour le message sont incorrect où le champs est resté vide !! </h1>';
+    }else{
+      $confort = $confort_sanitize;
+    }
     }
   
   //Traitement image default
@@ -196,19 +212,19 @@ if(isset($_POST['update_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
 </h2>
 
-<form method="POST" action="update_vehicule.php?id_car=<?=$_GET['id_car'] ?>" enctype="multipart/form-data">
+<form method="POST" action="update_vehicule.php?id_car=<?=htmlspecialchars($_GET['id_car'])?>" enctype="multipart/form-data">
 
   <label for="marque">Marque&nbsp;:<span aria-label="required">*</span></label>
-  <input id="marque" type="text" name="marque" value="<?=$vehicule['marque']?>" required />
+  <input id="marque" type="text" name="marque" value="<?=htmlspecialchars($vehicule['marque'])?>" required />
 
   <label for="modele">Modèle&nbsp;:<span aria-label="required">*</span></label>
-  <input id="modele" type="text" value="<?=$vehicule['modele']?>" name="modele" />
+  <input id="modele" type="text" value="<?=htmlspecialchars($vehicule['modele'])?>" name="modele" />
 
   <label for="annee">Année&nbsp;:<span aria-label="required">*</span></label>
-  <input id="annee" type="text" value="<?=$vehicule['annee']?>" name="annee" required />
+  <input id="annee" type="text" value="<?=htmlspecialchars($vehicule['annee'])?>" name="annee" required />
 
   <label for="km">Kilométrage&nbsp;:<span aria-label="required">*</span></label>
-  <input id="km" type="text" value="<?=$vehicule['km']?>" name="km" required />
+  <input id="km" type="text" value="<?=htmlspecialchars($vehicule['km'])?>" name="km" required />
 
   <div class="liste_filter"> 
   <label id="lab_filter" for="filter">Choisir le type de carburant :</label>

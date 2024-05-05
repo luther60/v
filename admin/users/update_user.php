@@ -83,7 +83,7 @@ if(isset($_POST['update_user']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 
-<form method="POST" action="update_user.php?id_user=<?=$_GET['id_user']?>">htmlspecialchars
+<form method="POST" action="update_user.php?id_user=<?=htmlspecialchars($_GET['id_user'])?>">htmlspecialchars
 
 <input type="hidden" id="id_user" name="id_user" value="<?= htmlspecialchars($user['id_user'] )?>" required/>
 
