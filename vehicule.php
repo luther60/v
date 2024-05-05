@@ -3,7 +3,6 @@ require_once __DIR__.'/template/header.php';
 require_once __DIR__.'/lib/pdo.php';
 require_once __DIR__.'/config/vehicules.php';
 require_once __DIR__.'/config/error.php';
-require_once __DIR__.'/lib/ini.php';
 
 if(isset($_GET['id_car'])){
   try{

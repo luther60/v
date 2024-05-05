@@ -2,7 +2,7 @@
 require_once __DIR__.'/template/header.php'; 
 require_once __DIR__.'/lib/pdo.php';
 require_once __DIR__.'/config/avis.php';
-require_once __DIR__.'/lib/ini.php';
+
 ?>
 <?php
 if(isset($_POST['post_avis']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
