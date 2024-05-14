@@ -1,8 +1,7 @@
 <?php 
-require_once __DIR__.'/template/header.php'; 
 require_once __DIR__.'/lib/pdo.php';
 require_once __DIR__.'/config/avis.php';
-
+require_once __DIR__.'/template/header.php'; 
 try{
   $avisTrue = getPostLimit($pdo);
   $avisFilter = json_encode($avisTrue);
@@ -10,7 +9,6 @@ try{
 }catch(Exception $e){
   echo"Capture de l'exception !".$e->getMessage();
 }
-
 
  ?>
 
@@ -190,7 +188,8 @@ try{
     <div class="validateAvis"></div>
   </main>
 </body>
-<script nonce="${nonce}" src='../javascript/style.js'></script>
-<script nonce="${nonce}" src='../javascript/avis.js' type="module"></script>
+<script nonce="bd9841" src='./javascript/style.js'></script>
+<script src='./javascript/avis.js' ></script>
+
 <?php require_once __DIR__.'/template/footer.php'; ?>
 </html>

@@ -31,7 +31,7 @@ $carsFiles = file_put_contents(__DIR__.'/../../json/vehicules.json',$carsForJs);
   <article class="card_car">
     
     <?php if($vehicule['img'] == null) { ?>
-      <img id="img_card" src="/../../admin/upload_img/backcars2.jpg" alt=""/>
+      <img id="img_card" src="./admin/upload_img/backcars2.jpg" alt=""/>
     <?php }else{ ?>
     <img class="img_card" src="<?=htmlspecialchars($vehicule['img'])?>" alt="<?=htmlspecialchars($vehicule['img'])?>"/>
     <?php } ?>

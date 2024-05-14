@@ -235,16 +235,16 @@ if(isset($_POST['create_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   <input id="prix" type="text" name="prix" required />
 
   <label for="exterieur">Options extérieur&nbsp;:<span aria-label="required">*</span></label>
-  <textarea id="exterieur" name="exterieur" cols="60" rows="5" placeholder="Options extérieur"></textarea>
+  <textarea id="exterieur" name="exterieur" cols="60" rows="5" placeholder="Options extérieur" required></textarea>
 
   <label for="interieur">Options intérieur&nbsp;:<span aria-label="required">*</span></label>
-  <textarea id="interieur" name="interieur" cols="60" rows="5" placeholder="Options intérieur"></textarea>
+  <textarea id="interieur" name="interieur" cols="60" rows="5" placeholder="Options intérieur" required></textarea>
 
   <label for="securite">Options sécurité&nbsp;:<span aria-label="required">*</span></label>
-  <textarea id="securite" name="securite" cols="60" rows="5" placeholder="Options sécurité"></textarea>
+  <textarea id="securite" name="securite" cols="60" rows="5" placeholder="Options sécurité" required></textarea>
 
   <label for="confort">Options confort&nbsp;:<span aria-label="required">*</span></label>
-  <textarea id="confort" name="confort" cols="60" rows="5" placeholder="Options confort"></textarea>
+  <textarea id="confort" name="confort" cols="60" rows="5" placeholder="Options confort" required></textarea>
 
   <label for="img">Ajouter une image principale&nbsp;:<span>*</span></label>
   <input type="file" name="img_default" required>

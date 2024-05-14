@@ -1,6 +1,8 @@
 <?php
+session_start();
+
  require_once '../lib/csp.php';
- require_once '../lib/ini.php';
+ //require_once '../lib/ini.php';
  ?>
 <!DOCTYPE html>
 <html lang="fr">

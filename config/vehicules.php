@@ -103,7 +103,7 @@ string $cv,string $prix,string $interieur,string $exterieur,string $securite,str
   return $query->execute();
 
   //Si données présentes pour les options
-  if($exterieur || $interieur || $securite || $confort || $id_current) {
+  if(isset($exterieur) || $interieur || $securite || $confort || $id_current) {
 
     $query = $pdo->prepare("UPDATE `options` SET `exterieur` = :exterieur,`interieur` = :interieur,`securite` = :securite,
     `confort = :confort` WHERE `id_current` = :id_current");

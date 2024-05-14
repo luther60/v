@@ -12,5 +12,6 @@ function redirect() {
 
 function getMessage() {
 
-  header('location:/../admin/no_access.php');
+ header('location:/../admin/no_access.php');
 }
+

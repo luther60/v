@@ -1,7 +1,3 @@
-<?php
- require_once __DIR__.'/../../lib/csp.php'; 
- require_once __DIR__.'/../../lib/ini.php'; 
- ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>

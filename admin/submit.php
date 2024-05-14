@@ -1,10 +1,9 @@
 <?php 
- require_once 'header_admin.php';
+ 
  require_once '../lib/pdo.php';
  require_once '../config/users.php';
  require_once '../config/error.php';
-?>
-<?php
+
 //Si données présente et méthode "POST"
 if(isset($_POST['login']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   //Si une des 2 données et vide ou toutes
@@ -35,10 +34,11 @@ if(isset($_POST['login']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
       setcookie("useradmin", 'admin',array(
         'expires' => time()+3600,
         'path' =>'/',
-        /*'secure' => true,*/
+        'secure' => true,
         'httponly' => true,
         'samesite' => 'Strict'));
       header("location: accueil_admin.php");
+      
     }
     if($user['role'] === 'beta') {
       session_start();
@@ -47,7 +47,7 @@ if(isset($_POST['login']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
       setcookie("user", 'user',array(
         'expires' => time()+3600,
         'path' =>'/',
-        /*'secure' => true,*/
+        'secure' => true,
         'httponly' => true,
         'samesite' => 'Strict'));
       header("location: accueil_admin.php");
@@ -58,5 +58,5 @@ if(isset($_POST['login']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   }  
   }   
   }
-?>
-<?php require_once '../admin/footer.php';?>
+  
+ require_once '../admin/footer.php';

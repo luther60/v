@@ -1,4 +1,4 @@
-<?php session_start();
+<?php 
 require_once '../admin/header_admin.php';
 require_once '../lib/pdo.php';
 require_once '../config/users.php';

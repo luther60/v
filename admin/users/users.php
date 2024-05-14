@@ -11,7 +11,7 @@ $users = getUsers($pdo);
 /*Vérification de l'user connecté, si pas de session, on redirige vers accueil 
 (A la fermeture du client, la session est détruite)*/
 if(($_SESSION['user']['role']) === null) { 
-  redirect();
+ return redirect();
  }elseif(($_SESSION['user']['role']) != 'admin') {
   getMessage();
  }

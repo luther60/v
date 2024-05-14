@@ -42,22 +42,22 @@ if(($_SESSION['user']['role']) === null) {
   <section id="text_option">
     <article class="details">
       <h2>Extérieur</h2>
-      <li><?=nl2br(htmlspecialchars($options['exterieur']))?></li>     
+      <li><?=nl2br($options['exterieur'])?></li>     
     </article>
   
     <article class="details">
       <h2>Intérieur</h2>
-      <li><?=nl2br(htmlspecialchars($options['interieur']))?></li>    
+      <li><?=nl2br($options['interieur'])?></li>    
     </article>
 
     <article class="details">
       <h2>Confort</h2>
-      <li><?=nl2br(htmlspecialchars($options['confort']))?></li>      
+      <li><?=nl2br($options['confort'])?></li>      
     </article>
   
     <article class="details">
       <h2>Sécurité</h2>
-      <li><?=nl2br(htmlspecialchars($options['securite']))?></li>      
+      <li><?=nl2br($options['securite'])?></li>      
     </article>
   </section>
 

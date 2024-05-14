@@ -36,7 +36,7 @@ if(isset($_POST['update_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 
   if(isset($_POST['modele'])) {
-    $modele_sanitize = htmlspecialchars($_POST['modele'],);
+    $modele_sanitize = htmlspecialchars($_POST['modele']);
     if(!preg_match("/^[a-zA-Z-' 0-9]*$/",$modele_sanitize)) {
       echo '<h1 class=\'alert\'>Certains caractères utilisé pour le nom du modèle sont incorrect !! </h1>';
     } else {
@@ -91,8 +91,8 @@ if(isset($_POST['update_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 
   if(isset($_POST['exterieur'])) {
-    $exterieur_sanitize = htmlspecialchars($_POST['exterieur']);
-    if(!preg_match("/^[[:alnum:][:punct:][:space:]èéç]+$/",$exterieur_sanitize)) {
+    $exterieur_sanitize = htmlentities($_POST['exterieur']);
+    if(!preg_match("/^[[:alnum:][:punct:][:space:]èéçà]+$/",$exterieur_sanitize)) {
       echo '<h1 class=\'alert\'>Certains caractères utilisé pour le message sont incorrect où le champs est resté vide !! </h1>';
     }else{
       $exterieur = $exterieur_sanitize;
@@ -101,7 +101,7 @@ if(isset($_POST['update_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   
   if(isset($_POST['interieur'])) {
     $interieur_sanitize = htmlspecialchars($_POST['interieur']);
-    if(!preg_match("/^[[:alnum:][:punct:][:space:]èéç]+$/",$interieur_sanitize)) {
+    if(!preg_match("/^[[:alnum:][:punct:][:space:]èéçà]+$/",$interieur_sanitize)) {
       echo '<h1 class=\'alert\'>Certains caractères utilisé pour le message sont incorrect où le champs est resté vide !! </h1>';
     }else{
       $interieur = $interieur_sanitize;
@@ -110,7 +110,7 @@ if(isset($_POST['update_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   
   if(isset($_POST['securite'])) {
     $securite_sanitize = htmlspecialchars($_POST['securite']);
-    if(!preg_match("/^[[:alnum:][:punct:][:space:]èéç]+$/",$securite_sanitize)) {
+    if(!preg_match("/^[[:alnum:][:punct:][:space:]èéçà]+$/",$securite_sanitize)) {
       echo '<h1 class=\'alert\'>Certains caractères utilisé pour le message sont incorrect où le champs est resté vide !! </h1>';
     }else{
       $securite = $securite_sanitize;
@@ -119,7 +119,7 @@ if(isset($_POST['update_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   
   if(isset($_POST['confort'])) {
     $confort_sanitize = htmlspecialchars($_POST['confort']);
-    if(!preg_match("/^[[:alnum:][:punct:][:space:]èéç]+$/",$confort_sanitize)) {
+    if(!preg_match("/^[[:alnum:][:punct:][:space:]èéçà]+$/",$confort_sanitize)) {
       echo '<h1 class=\'alert\'>Certains caractères utilisé pour le message sont incorrect où le champs est resté vide !! </h1>';
     }else{
       $confort = $confort_sanitize;
@@ -169,7 +169,7 @@ if(isset($_POST['update_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
      $count = count($images);//On compte le nb images actuelles
      for($i = 0; $i < $count; $i++) {
      $currentImg = $images[$i]['id_img'];
-     $id_img = $currentImg;
+     $id_img = $currentImg; 
      if(file_exists($images[$i]['path_img'])) {
       unlink($images[$i]['path_img']);
      }
@@ -199,10 +199,11 @@ if(isset($_POST['update_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
      $img_temp = $_FILES['img_default']['tmp_name'];
      $upload_img = "../upload_img/".$newName;
      move_uploaded_file($img_temp,$upload_img);
-  $img = $upload_img;
-  $id_current = $id_car;
-  $updateVehicule = updateVehicule($pdo,$id_car,$marque,$modele,$annee,$km,$energie,$transmission,$cv,$prix,$interieur,$exterieur,
-  $securite,$confort,$id_current,$img);
+    $img = $upload_img;
+    $id_current = $id_car;
+    $updateVehicule = updateVehicule($pdo,$id_car,$marque,$modele,$annee,$km,$energie,$transmission,$cv,$prix,$interieur,$exterieur,
+    $securite,$confort,$id_current,$img);
+ 
   echo '<h1 class=\'true\'>La création du véhicule à été effectué !! </h1>';
 } 
 }
@@ -255,16 +256,16 @@ if(isset($_POST['update_vehicule']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   <input id="prix" type="text" value="<?=htmlspecialchars($vehicule['prix'])?>" name="prix" required />
 
   <label for="exterieur">Options extérieur&nbsp;:<span aria-label="required">*</span></label>
-  <textarea id="exterieur" name="exterieur"  cols="60" rows="5" placeholder="Options extérieur"><?=htmlspecialchars($options['exterieur'])?></textarea>
+  <textarea id="exterieur" name="exterieur"  cols="60" rows="5" placeholder="Options extérieur" required><?=htmlspecialchars($options['exterieur'])?></textarea>
 
   <label for="interieur">Options intérieur&nbsp;:<span aria-label="required">*</span></label>
-  <textarea id="interieur" name="interieur"  cols="60" rows="5" placeholder="Options intérieur"><?=htmlspecialchars($options['interieur'])?></textarea>
+  <textarea id="interieur" name="interieur"  cols="60" rows="5" placeholder="Options intérieur" required><?=htmlspecialchars($options['interieur'])?></textarea>
 
   <label for="securite">Options sécurité&nbsp;:<span aria-label="required">*</span></label>
-  <textarea id="securite" name="securite"  cols="60" rows="5" placeholder="Options sécurité"><?=htmlspecialchars($options['securite'])?></textarea>
+  <textarea id="securite" name="securite"  cols="60" rows="5" placeholder="Options sécurité" required><?=htmlspecialchars($options['securite'])?></textarea>
 
   <label for="confort">Options confort&nbsp;:<span aria-label="required">*</span></label>
-  <textarea id="confort" name="confort"  cols="60" rows="5" placeholder="Options confort"><?=htmlspecialchars($options['confort'])?></textarea>
+  <textarea id="confort" name="confort"  cols="60" rows="5" placeholder="Options confort" required><?=htmlspecialchars($options['confort'])?></textarea>
 
   <label for="img">Ajouter une image principale&nbsp;:<span>*</span></label>
   <input type="file" name="img_default" required>
