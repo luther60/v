@@ -188,7 +188,7 @@ try{
     <div class="validateAvis"></div>
   </main>
 </body>
-<script nonce="bd9841" src='./javascript/style.js'></script>
+<script src='./javascript/style.js'></script>
 <script src='./javascript/avis.js' ></script>
 
 <?php require_once __DIR__.'/template/footer.php'; ?>

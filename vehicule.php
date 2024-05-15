@@ -57,6 +57,7 @@ if(isset($_GET['id_car'])){
   </section>
 
   <div class="call_car"><a href="contact.php?id_car=<?=htmlspecialchars($vehicule['id_car'])?>">Nous contactez</a></div>
+  <div class="call_car"><a  href="pdf.php?id_car=<?=$vehicule['id_car']?>" target="_blank">Télécharger la fiche en PDF</a></div>
   
 </main>
 <?php require_once __DIR__.'/template/footer.php'; ?>  
