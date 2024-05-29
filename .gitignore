@@ -1,3 +1,6 @@
 /lib
 /vendor
 /admin/upload_img
+/token.php
+/email.php
+/contact.php

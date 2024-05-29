@@ -60,7 +60,7 @@ function deleteAvis(PDO $pdo,int $id_avis) {
 
 //Récupération avis avec limite
 function getPostLimit(PDO $pdo) {
-  $query = $pdo->prepare("SELECT * FROM `avis` ORDER BY  `date_post` DESC LIMIT 5");
+  $query = $pdo->prepare("SELECT * FROM `avis` WHERE `status` = 'valid' ORDER BY  `date_post` DESC LIMIT 5");
   $query->execute();
   $avis = $query->fetchAll(PDO::FETCH_ASSOC);
   return $avis;

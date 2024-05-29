@@ -8,12 +8,12 @@ require_once __DIR__.'/../../config/error.php';
 if(($_SESSION['user']['role']) === null) { 
   redirect();
  }
-$allAvis = getPostFalse($pdo);
+$allAvis = getPostTrue($pdo);
 
 ?>
 
 <main class="min_height">
-  <h1 class="title_index">Liste des avis</h1>
+  <h1 class="title_index">Liste des avis validés en page d'accueil</h1>
   <section id="parent_avis">
     <?php foreach($allAvis as $avis) { ?>
     <article class="card_avis">

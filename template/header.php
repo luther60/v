@@ -6,14 +6,13 @@
  define('_CONTACT_','Formulaire de contact V.parrot');
  define('_POST_RATING_','Déposer un avis pour le garage V.parrot');
  define('_CASUAL_','Garage V.parrot');
+ define('_DESC_CARS_','Garage Parrot, votre spécialiste des véhicules d\'occasions fiables et garantie 6 mois minimum !');
  ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="connect-src 'self'"/>
-  <meta http-equiv="Content-Security-Policy" content="font-src fonts.gstatic.com;style-src-elem 'self' fonts.googleapis.com"/>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,7 +24,8 @@
   }elseif($_SERVER['REQUEST_URI'] === '/vehicules.php') {
     echo"<title>"._SALES_CARS_."</title>";
     echo"<meta name="._CARS_."/>";
-  }elseif($_SERVER['REQUEST_URI'] === '/contact.php') {
+    echo"<meta description="._DESC_CARS_."/>";
+  }elseif($_SERVER['REQUEST_URI'] === '/email.php') {
     echo"<title>"._CONTACT_."</title>";
   }elseif($_SERVER['REQUEST_URI'] === '/post_avis.php'){
     echo"<title>"._POST_RATING_."</title>";
@@ -49,15 +49,15 @@
     <ul class="link_category">
     <div class="lien">
       <img class="icon" src="/assets/cars_home.png" alt="icone accueil véhicule">
-      <li><a class='nav_link' href="/vehicules.php">Nos véhicules</a></li>
+      <ul><li><a class='nav_link' href="/vehicules.php">Nos véhicules</a></li></ul>
     </div>
     <div class="lien">
       <img class="icon" src="/assets/mail.png" alt="icone message">
-      <li><a class='nav_link' href="../contact.php">Nous contactez</a></li>
+      <ul><li><a class='nav_link' href="../contact.php">Nous contactez</a></li></ul>
     </div>
     <div class="lien">
       <img class="icon" src="/assets/avis.png" alt="icone avis">
-      <li><a class='nav_link' href="../post_avis.php">Poster un avis</a></li>
+      <ul><li><a class='nav_link' href="../post_avis.php">Poster un avis</a></li></ul>
     </div>
     </ul>
   </nav>

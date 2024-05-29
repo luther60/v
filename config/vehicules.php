@@ -155,3 +155,19 @@ function deleteOptions(PDO $pdo,int $id_options) {
   $optionsDelete = $query->fetch(PDO::FETCH_ASSOC);
   return $optionsDelete;
 }
+
+//Comptage du nb de véhicules
+function countCars(PDO $pdo) {
+  $query = $pdo->prepare("SELECT count(*) FROM `vehicules`");
+  $query->execute();
+  $countCars = $query->fetch(PDO::FETCH_ASSOC);
+  return $countCars;
+}
+
+//Addition de tous les prix de ventes
+function allPrice(PDO $pdo) {
+  $query = $pdo->prepare("SELECT AVG(prix) FROM `vehicules`");
+  $query->execute();
+  $allPrice = $query->fetch(PDO::FETCH_ASSOC);
+  return $allPrice;
+}

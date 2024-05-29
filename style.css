@@ -220,9 +220,9 @@ textarea{text-align: center;font-size: 1.5rem;margin-bottom: 1.5rem;width: 90%;}
 
 /*Page read_avis.php*/
 
-#parent_avis{display: flex;flex-wrap: wrap;justify-content: center;}
+#parent_avis{display: flex;flex-direction: row;flex-wrap: wrap;justify-content: center;}
 
-.card_avis{border:0.5rem solid black;margin: 1rem;width: 100%;text-align: center;}
+.card_avis{border:0.5rem solid black;margin: 1rem;width: 25%;text-align: center;}
 
 .text_avis{font-size: 1rem;margin-bottom: 1rem;justify-content: center;flex-wrap: wrap;}
 
@@ -236,12 +236,8 @@ textarea{text-align: center;font-size: 1.5rem;margin-bottom: 1.5rem;width: 90%;}
 
 .container{margin: 1rem;;text-align: center;font-size: 1.5rem;width: 60%;}
 
-
-
-
-
 /*Mobile*/
-@media (max-width: 375px) {
+@media (max-width: 475px) {
 
   .icon{width: 2rem;height: 2rem;}
 
@@ -265,11 +261,12 @@ textarea{text-align: center;font-size: 1.5rem;margin-bottom: 1.5rem;width: 90%;}
 
  #parent_avis{flex-direction: column;}
 
- .card_avis{width: 20rem;}
+ .card_avis{width: 10rem;}
  
  label, input{width: 100%;height: 3rem;text-align: center;margin: auto;font-size: 1rem;}
 
  .validateAvis{flex-direction: column;}
+
 }
 
 /*Tablet*/
@@ -277,11 +274,10 @@ textarea{text-align: center;font-size: 1.5rem;margin-bottom: 1.5rem;width: 90%;}
 @media (max-width: 1024px) {
   .validateAvis{flex-wrap: wrap;justify-content: space-around;}
 
-  .card_avis{width: 22rem;}
+  .card_avis{width: 20rem;}
 
   label, input{width: 100%;height: 3rem;text-align: center;margin: auto;font-size: 1rem;}
 
   #img_main{width: 95%;height: 15rem;}
 
-  .card_avis{width: 100%;}
 }

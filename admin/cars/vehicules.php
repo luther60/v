@@ -7,6 +7,8 @@ require_once __DIR__.'/../../lib/ini.php';
 require_once __DIR__.'/../../lib/csp.php';
 try{
 $vehicules = getVehicules($pdo);
+$carsForJs = json_encode($vehicules);
+$carsFiles = file_put_contents(__DIR__.'/../../json/vehicules.json',$carsForJs);
 }catch(Exception $e){
   echo"Capture de l'exception !".$e->getMessage();
 };
@@ -16,8 +18,7 @@ if(($_SESSION['user']['role']) === null) {
   redirect();
  }
 
-$carsForJs = json_encode($vehicules);
-$carsFiles = file_put_contents(__DIR__.'/../../json/vehicules.json',$carsForJs);
+
 ?>
 
 <h1 class="title_index">Bienvenue dans votre espace de gestion des vehicules <?=htmlspecialchars($_SESSION['user']['firstname'])?></h1>

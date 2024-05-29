@@ -10,9 +10,25 @@ if(isset($_GET['id_car'])){
   $vehicule = getVehiculeById($pdo,$_GET['id_car']);
 }catch(Exception $e){
     echo"Capture de l'exception !".$e->getMessage();
-};
+}
+}
+//Gestion envoi mail avec mail()
+if(isset($_POST['post_message'])) {
+  try{
+    $to = 'contact@g-vparrot.fr';
+    $subject = $_POST['subject'] ;
+    $message = $_POST['message'] ;
+    $headers = array(
+      'From' => $_POST['mail'],
+      'Reply-To' => $_POST['mail'],
+      'X-Mailer' => 'PHP/'.phpversion()
+  );  
+  }catch(Exception $e){
+    echo"Désolé, un problème est survenu!!";
+  }
 }
 
+mail($to,$subject,$message,implode("\r\n",$headers));
  ?>
 
 <?php
@@ -73,6 +89,10 @@ if(empty($name) || empty($firstname) || ($mail === false || empty($mail)) || emp
 
 <label for="mail">Email <span aria-label="required">*</span></label>
 <input type="text" id="mail" name="mail" placeholder="Email" required/>
+
+<label for="subject">Sujet <span aria-label="required">*</span></label>
+<input type="text" id="subject" name="subject" placeholder="Votre demande" required/>
+
 <?php if(isset($_GET['id_car'])) { ?>
   <label for="message">Message <span aria-label="required">*</span></label>
 <textarea id="message" name="message" rows="10" cols="100" placeholder="Votre message ici....">Bonjour, je souhaiterais 
